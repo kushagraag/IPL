@@ -1,0 +1,11 @@
+.liveScore{
+    width: 50px;
+    height: auto;
+    margin: auto;
+    background-color: yellow;
+    padding-left: 20px;
+    border: 5px thick black;
+    display: inline-block;
+    font-size: larger;
+    background-color: white;
+}
