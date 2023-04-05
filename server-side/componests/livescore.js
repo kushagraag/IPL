@@ -25,7 +25,7 @@ const handleLive = (html) =>{
     for(let i = 0 ; i < LiveArr.length ; i++){
         // console.log($(LiveArr[i]).html());
         const st = $(LiveArr[i]).find(".ds-text-tight-xs.ds-truncate.ds-text-typo-mid3 a").attr("href");
-        const trimString = st.split("/");
+        let trimString = st.split("/");
         // console.log(typeof st);
         if(trimString[2] === "indian-premier-league-2023-1345038"){
             link += st;

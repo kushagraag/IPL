@@ -32,6 +32,7 @@ const handlePoints = (html) => {
     const win = $(allCol[2]).text();
     const lost = $(allCol[3]).text();
     const tie = $(allCol[4]).text();
+    const point = $(allCol[6]).text();
     const netRun = $(allCol[7]).text();
     let obj = {
       Team: name,
@@ -39,6 +40,7 @@ const handlePoints = (html) => {
       win: win,
       lost: lost,
       tie: tie,
+      point: point,
       net_run_rate: netRun,
     };
 

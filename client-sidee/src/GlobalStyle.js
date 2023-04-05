@@ -80,6 +80,8 @@ li {
    grid-template-columns: 1fr 1.2fr .5fr .8fr ;
 }
 table{
+  width:50%;
+  align:center;
   margin: 5rem auto;
   border-radius: 2rem;
   border: 1rem hidden #443C68;
@@ -87,7 +89,7 @@ table{
   box-shadow: 0 0 0 1px black;
   overflow: hidden;
   max-width: 80rem;
-  padding: 40px
+  padding: 40px;
 }
 td{
   font-size: 1.6rem;
@@ -95,7 +97,7 @@ td{
 }
 th,td {
   border: 1px solid #443c44;
-  min-width: 30rem;
+  min-width: 15rem;
   padding: 1.5rem;
   line-height: 1.7;
 }
@@ -228,6 +230,7 @@ img{
   background-color:white;
   
 }
+
 
   
 `;

@@ -63,7 +63,7 @@ function Schedule() {
                 </span>
               </div>
               <div>
-                <span style={{ fontSize: "20px" }}>{place}</span>
+                <span style={{ fontSize: "20px" }}>{time}</span>
               </div>
             </div>
             <div id="div3">

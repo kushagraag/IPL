@@ -25,6 +25,7 @@ function PointsTable() {
     return (
       <>
       <h1 style={{textAlign:"center" , margin:"15px" }}>POINTS TABLE</h1>
+      <div className="pointstable">
       <table>
         <thead>
           <tr style={{backgroundColor:"#F0F8FF"}}>
@@ -32,8 +33,9 @@ function PointsTable() {
           <th>MATCHES</th>
           <th>WINS</th>
           <th>LOST</th>
-          <th>NO RESULT</th>
-          <th>NET RUN RATE</th>
+          <th>N/R</th>
+          <th>POINTS</th>
+          <th>NRR</th>
 
           </tr>
           
@@ -41,7 +43,7 @@ function PointsTable() {
         <tbody>
           {
             teams.map((curTeam) =>{
-              const { Team , match , win , lost , tie , net_run_rate} = curTeam;
+              const { Team , match , win , lost , tie , point, net_run_rate} = curTeam;
               return(
                 <tr>
                   <td >{Team}</td>
@@ -49,6 +51,7 @@ function PointsTable() {
                   <td className="tdclass">{win}</td>
                   <td className="tdclass">{lost}</td>
                   <td className="tdclass">{tie}</td>
+                  <td className="tdclass">{point}</td>
                   <td className="tdclass">{net_run_rate}</td>
                 </tr>
               );  
@@ -56,6 +59,10 @@ function PointsTable() {
           }
         </tbody>
       </table>
+
+
+      </div>
+      
       </>
     );
   }

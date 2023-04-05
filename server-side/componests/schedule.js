@@ -12,7 +12,7 @@ request(
       }
     }
   );
-  console.log(ans);
+  // console.log(ans);
   return ans;
 };
 const handleSchedule = (html) => {
@@ -25,8 +25,11 @@ const handleSchedule = (html) => {
       const dateArr = $(table).find(".ds-text-compact-xs.ds-font-bold.ds-w-24");
       const date = $(dateArr[i]).text();
       // .ds-grow.ds-px-4.ds-border-r.ds-border-line-default-translucent .ds-text-tight-xs.ds-font-bold.ds-uppercase.ds-leading-5
-      const timeArr = $(table).find(".ds-grow.ds-px-4.ds-border-r.ds-border-line-default-translucent .ds-text-tight-xs.ds-font-bold.ds-uppercase.ds-leading-5");
+      // const timeArr = $(table).find(".ds-grow.ds-px-4.ds-border-r.ds-border-line-default-translucent .ds-text-tight-xs.ds-font-bold.ds-uppercase.ds-leading-5");
+      const timeArr =$(".ds-text-tight-xs.ds-truncate.ds-text-typo-mid3");
       const time = $(timeArr[i]).text();
+      console.log(time);
+      //.ds-text-tight-xs.ds-truncate.ds-text-typo-mid3
       const placeArr = $(table).find(".ds-text-compact-xxs .ds-relative .ds-flex.ds-justify-between.ds-items-center .ds-text-tight-xs.ds-truncate.ds-text-typo-mid3");
       const place = $(placeArr[i]).text();
       const teamArr = $(table).find(".ds-text-tight-m.ds-font-bold.ds-capitalize.ds-truncate");
@@ -36,7 +39,7 @@ const handleSchedule = (html) => {
       const resultArr = $(table).find(".ds-text-tight-s.ds-font-regular.ds-line-clamp-2.ds-text-typo");
       // const resultArr = $(table).find(".ds-text-tight-s.ds-font-regular.ds-line-clamp-2.ds-text-typo");
       const results = $(resultArr[i]).text();
-      // console.log(results);
+      // console.log(time);
       let obj = {
         date : date,
         time : time,
@@ -45,6 +48,7 @@ const handleSchedule = (html) => {
         team2 : team2,
         result : results,
       }
+      console.log(obj);
       arr.push(obj);
       
     }
