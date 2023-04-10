@@ -29,10 +29,10 @@ const handleSchedule = (html) => {
       const team2_score = $(team_score_Arr[k++]).text();
       // .ds-text-tight-s.ds-font-regular.ds-line-clamp-2.ds-text-typo
       const resultArr = $(table).find(".ds-text-tight-s.ds-font-regular.ds-line-clamp-2.ds-text-typo");
-      // const resultArr = $(table).find(".ds-text-tight-s.ds-font-regular.ds-line-clamp-2.ds-text-typo");
+      
       const results = $(resultArr[i]).text();
       let obj = {
-        date ,
+        date : date ,
         time,
         place,
         team1,
