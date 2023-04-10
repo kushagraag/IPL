@@ -32,7 +32,7 @@ const handleHighestScore = (html) => {
       sr: sr,
     };
     arr.push(obj);
-    // console.log(obj);
+    
   }
   return arr;
 };

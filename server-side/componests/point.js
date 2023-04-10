@@ -25,7 +25,7 @@ const handlePoints = (html) => {
     const netRun = $(allCol[7]).text();
     let obj = {
       Team: name,
-      match: match,
+      match,
       win: win,
       lost: lost,
       tie: tie,

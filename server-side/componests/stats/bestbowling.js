@@ -2,13 +2,7 @@ const request = require("request");
 const cheerio = require("cheerio");
 const axios = require("axios");
 const highestBestBowling = async(url) => {
-  // request(url, (err, res, html) => {
-  //   if (err) {
-  //     console.error(err);
-  //   } else {
-  //     handleHighestBestBowling(html);
-  //   }
-  // });
+
   const html = await axios.get(url);
   const ans = handleHighestBestBowling(html.data);
   return ans;

@@ -24,13 +24,13 @@ async function handleLiveScore(html){
     let newUrl = $(newUrlArr[1]).attr("href");
     let finalUrl = "https://www.espncricinfo.com" + newUrl; 
     let obj1 = {
-      team1 : team1,
-      score1 : score1,
-      team2 : team2,
-      score2 : score2,
-      crr : crr,
-      rrr : rrr, 
-      status : status
+      team1,
+      score1,
+      team2,
+      score2,
+      crr,
+      rrr, 
+      status
     }
     let obj2 = await scorecard(finalUrl);
 

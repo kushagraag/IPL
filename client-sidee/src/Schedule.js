@@ -19,7 +19,6 @@ function Schedule() {
   }, []);
   return (
     <>
-      {/* <h1 style={{textAlign:"center" , margin:"15px" }}>Schedule</h1> */}
 
       <div
         id="div1"
@@ -40,14 +39,7 @@ function Schedule() {
         Result
       </div>
 
-      {/* <hr size="3" width="100%" color="black" />   */}
-
-      {/* "date": "Tue, 11 Apr",
-        "time": "Tues, 11 Apr, 2:00 PM",
-        "place": "16th Match (N), Delhi, April 11, 2023, Indian Premier League",
-        "team1": "Delhi Capitals",
-        "team2": "Mumbai Indians",
-        "result": "Match yet to begin" */}
+      
 
       {schedules.map((item) => {
         const { date, time, place, team1, team2, result } = item;

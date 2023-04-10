@@ -1,8 +1,8 @@
 const request = require("request");
 const cheerio = require("cheerio");
 const axios = require("axios");
-const scorecard = async(url) => {
-  const html = await axios.get(url)
+const scorecard = async (url) => {
+  const html = await axios.get(url);
   const ans = handleScoreCard(html.data);
   return ans;
 };
@@ -33,76 +33,60 @@ function handleScoreCard(html) {
           const sixs = $(allCol[6]).text();
           const sr = $(allCol[7]).text();
           let obj = {
-            playerName: playerName,
-            wicketTaker: wicketTaker,
-            run: run,
-            ball: ball,
-            fours: fours,
-            sixs: sixs,
-            sr: sr,
+            playerName,
+            wicketTaker,
+            run,
+            ball,
+            fours,
+            sixs,
+            sr,
           };
           batting1.push(obj);
         }
       }
       let n = batting1.length;
       batting1 = batting1.slice(0, n);
-      // console.log(batting1);
-    }
-    
-    else if( j === 1){
+    } else if (j === 1) {
       for (let i = 0; i < rowArr.length; i = i + 1) {
         const allCol = $(rowArr[i]).find("td");
-        if($(allCol[0]).hasClass(
-          "ds-flex ds-items-center"
-        )){
+        if ($(allCol[0]).hasClass("ds-flex ds-items-center")) {
           const playerName = $(allCol[0]).text();
           const over = $(allCol[1]).text();
           const run = $(allCol[3]).text();
           const wicket = $(allCol[4]).text();
-          const economy = $(allCol[5]).text(); 
+          const economy = $(allCol[5]).text();
           let obj = {
             playerName: playerName,
             over: over,
             run: run,
             wicket: wicket,
             economy: economy,
-      }
-      bowler1.push(obj)
-
+          };
+          bowler1.push(obj);
         }
-        
-    }
-    // console.log(bowler1);
-  }
-
-  else if( j === 3){
-    for (let i = 0; i < rowArr.length; i = i + 1) {
-      const allCol = $(rowArr[i]).find("td");
-      if($(allCol[0]).hasClass(
-        "ds-flex ds-items-center"
-      )){
-        const playerName = $(allCol[0]).text();
-        const over = $(allCol[1]).text();
-        const run = $(allCol[3]).text();
-        const wicket = $(allCol[4]).text();
-        const economy = $(allCol[5]).text(); 
-        let obj = {
-          playerName: playerName,
-          over: over,
-          run: run,
-          wicket: wicket,
-          economy: economy,
-    }
-    bowler2.push(obj)
-
       }
-      
-  }
-  // console.log(bowler2);
-}
-    
-
-    else if (j === 2) {
+      // console.log(bowler1);
+    } else if (j === 3) {
+      for (let i = 0; i < rowArr.length; i = i + 1) {
+        const allCol = $(rowArr[i]).find("td");
+        if ($(allCol[0]).hasClass("ds-flex ds-items-center")) {
+          const playerName = $(allCol[0]).text();
+          const over = $(allCol[1]).text();
+          const run = $(allCol[3]).text();
+          const wicket = $(allCol[4]).text();
+          const economy = $(allCol[5]).text();
+          let obj = {
+            playerName: playerName,
+            over: over,
+            run: run,
+            wicket: wicket,
+            economy: economy,
+          };
+          bowler2.push(obj);
+        }
+      }
+      // console.log(bowler2);
+    } else if (j === 2) {
       console.log(rowArr.length);
       for (let i = 0; i < rowArr.length; i = i + 1) {
         const allCol = $(rowArr[i]).find("td");
@@ -136,11 +120,11 @@ function handleScoreCard(html) {
     }
   }
   let finalObject = {
-    batting1 : batting1,
-    batting2 : batting2,
-    bowler1 : bowler1,
-    bowler2 : bowler2
-  }
+    batting1: batting1,
+    batting2: batting2,
+    bowler1: bowler1,
+    bowler2: bowler2,
+  };
   return finalObject;
 
   // console.log(object);

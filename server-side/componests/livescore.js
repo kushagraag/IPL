@@ -37,10 +37,7 @@ const handleLive = async(html) =>{
             link += st;
             break;
         }
-        // if(st[i] === "Indian Premier League"){
-        //        link += "/series/indian-premier-league-2023-1345038/rajasthan-royals-vs-punjab-kings-8th-match-1359482/live-cricket-score";
-        //        break;
-        //    }
+        
     }
     const fullLink = "https://www.espncricinfo.com" + link;
     // console.log(fullLink);

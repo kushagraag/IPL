@@ -40,7 +40,7 @@ const handleMostFifty = (html) => {
       team: team,
     };
     arr.push(obj);
-    // console.log(obj);
+    
     // console.log(` ${playerName} || ${matches} || ${run} || ${avg} || ${fifty} || ${hundreds}` );
   }
   return arr;

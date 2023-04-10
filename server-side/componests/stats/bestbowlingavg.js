@@ -26,7 +26,7 @@ const handleBestBowlingAvg = (html) => {
     var avg = $(allCol[7]).text();
 
     var obj = {
-      playerName,
+      playerName : playerName,
       matches,
       run,
       wicket,

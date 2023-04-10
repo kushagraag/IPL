@@ -27,7 +27,7 @@ const handleSchedule = (html) => {
       const team1_score = $(team_score_Arr[k++]).text();
       const team2 = $(teamArr[j++]).text();
       const team2_score = $(team_score_Arr[k++]).text();
-      // .ds-text-tight-s.ds-font-regular.ds-line-clamp-2.ds-text-typo
+      
       const resultArr = $(table).find(".ds-text-tight-s.ds-font-regular.ds-line-clamp-2.ds-text-typo");
       
       const results = $(resultArr[i]).text();
