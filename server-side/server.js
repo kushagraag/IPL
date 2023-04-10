@@ -1,25 +1,31 @@
 const express = require("express");
 const { point } = require("./componests/point");
 const {schedule} = require("./componests/schedule");
-const {livescore} = require("./componests/livescore")
+const {livescore} = require("./componests/livescore");
+const {stats} = require("./componests/stats")
 const app = express();
 const cors = require("cors");
 
 app.use(cors({origin:"http://localhost:3000" , }))
 
-app.get("/pointstable", (req, res) => {
-  const data = point();
+app.get("/pointstable", async(req, res) => {
+  const data = await point();
   res.send(data);
 });
 
-app.get("/schedule", (req, res) => {
+app.get("/schedule", async(req, res) => {
   
-  var data1 = schedule();
+  var data1 = await schedule();
   res.send(data1);
 });
 
-app.get("/livescore", (req,res)=>{
-  var data = livescore();
+app.get("/livescore", async(req,res)=>{
+  var data = await livescore();
+  res.send(data);
+});
+
+app.get("/stats", async(req,res)=>{
+  var data = await stats();
   res.send(data);
 });
 

@@ -1,22 +1,14 @@
 const {scorecard} = require("./scorecard");
-const request = require("request");
+const axios = require("axios");
 const cheerio = require("cheerio");
 
-const score = (url) => {
-    request(
-    url,
-    (err, res, html) => {
-      if (err) {
-        console.error(err);
-      } else {
-        handleLiveScore(html);
-      }
-    }
-  );
-    // return "hello";
+const score = async(url) => {
+  const html = await axios.get(url)
+  const ans = handleLiveScore(html.data);
+  return ans;
 };
 
-function handleLiveScore(html){
+async function handleLiveScore(html){
     const $ =  cheerio.load(html);
     const teamArr = $(".ds-text-tight-l.ds-font-bold.ds-text-typo.ds-block.ds-truncate");
     const scoreArr = $(".ds-text-compact-m.ds-text-typo.ds-text-right.ds-whitespace-nowrap");
@@ -31,8 +23,23 @@ function handleLiveScore(html){
     let newUrlArr = $(".ds-flex.ds-justify-center.ds-h-10");
     let newUrl = $(newUrlArr[1]).attr("href");
     let finalUrl = "https://www.espncricinfo.com" + newUrl; 
-    let obj = scorecard(finalUrl);
-    // console.log(obj);
+    let obj1 = {
+      team1 : team1,
+      score1 : score1,
+      team2 : team2,
+      score2 : score2,
+      crr : crr,
+      rrr : rrr, 
+      status : status
+    }
+    let obj2 = await scorecard(finalUrl);
+
+    let data = {
+      ...obj1,
+      ...obj2
+    }
+    return data;
+    
 }
 
 module.exports = { score };
