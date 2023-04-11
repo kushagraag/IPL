@@ -1,6 +1,42 @@
 import React, { useEffect, useState } from "react";
+import "./styles/LiveScore.css"
 function LiveScore() {
-  const [score, setScore] = useState([]);
+  const [match, setMatch] = useState([]);
+
+  const [showBatting1, setShowBatting1] = useState(true);
+  const [showBatting2, setShowBatting2] = useState(false);
+  const [containerClass, setContainerClass] = useState("");
+
+
+  const toggleBatting1 = () => {
+    setShowBatting1(true);
+    setShowBatting2(false);
+    setContainerClass("slide-right");
+
+  };
+
+  const toggleBatting2 = () => {
+    setShowBatting1(false);
+    setShowBatting2(true);
+    setContainerClass("slide-left");
+
+  };
+
+  const buttonStyle1 = {
+    fontSize: 25,
+    backgroundColor: "transparent",
+    border: "none",
+    borderBottom: showBatting1 ? "2px solid blue" : "none",
+    opacity: showBatting1 ? "100%" : "30%",
+  };
+
+  const buttonStyle2 = {
+    fontSize: 25,
+    backgroundColor: "transparent",
+    border: "none",
+    borderBottom: showBatting2 ? "2px solid blue" : "none",
+    opacity: showBatting2 ? "100%" : "30%",
+  };
 
   const fetchScore = async (url) => {
     try {
@@ -10,20 +46,236 @@ function LiveScore() {
       //   setTeams(data);
       // }
       const data = {
-        team_name1: "CSK",
-        team_score1: "10/1",
-        team_score2: "yet to bat",
-        team_name2: "RCB",
-        team_status: "CSK wi the toss",
-        over: "12.5",
-        crr: "5",
-        batting: "KJH",
-        batman1: "xyz",
-        batsman2: "hjk",
-        bowler1: "qaz",
-        bowler2: "ijh",
-      };
-      setScore(data);
+        team1: "Punjab Kings",
+        img1 : "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/317000/317003.png",
+        score1: "197/4",
+        team2: "Rajasthan Royals",
+        img2 : "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/313400/313423.logo.png",
+        score2: "(20 ov, T:198) 192/7",
+        crr: "",
+        status: "Punjab Kings won by 5 runs",
+        batting1: [
+            {
+                "playerName": "Prabhsimran Singh ",
+                "wicketTaker": "c Buttler b Holder",
+                "run": "60",
+                "ball": "34",
+                "fours": "7",
+                "sixs": "3",
+                "sr": "176.47"
+            },
+            {
+                "playerName": "Shikhar Dhawan (c)",
+                "wicketTaker": "not out ",
+                "run": "86",
+                "ball": "56",
+                "fours": "9",
+                "sixs": "3",
+                "sr": "153.57"
+            },
+            {
+                "playerName": "Jitesh Sharma †",
+                "wicketTaker": "c Parag b Chahal",
+                "run": "27",
+                "ball": "16",
+                "fours": "2",
+                "sixs": "1",
+                "sr": "168.75"
+            },
+            {
+                "playerName": "Sikandar Raza ",
+                "wicketTaker": " b Ashwin",
+                "run": "1",
+                "ball": "2",
+                "fours": "0",
+                "sixs": "0",
+                "sr": "50.00"
+            },
+            {
+                "playerName": "M Shahrukh Khan ",
+                "wicketTaker": "c Buttler b Holder",
+                "run": "11",
+                "ball": "10",
+                "fours": "1",
+                "sixs": "0",
+                "sr": "110.00"
+            },
+            {
+                "playerName": "Sam Curran ",
+                "wicketTaker": "not out ",
+                "run": "1",
+                "ball": "2",
+                "fours": "0",
+                "sixs": "0",
+                "sr": "50.00"
+            }
+        ],
+        "batting2": [
+            {
+                "playerName": "Yashasvi Jaiswal ",
+                "wicketTaker": "c sub (MW Short) b Arshdeep Singh",
+                "run": "11",
+                "ball": "8",
+                "fours": "1",
+                "sixs": "1",
+                "sr": "137.50"
+            },
+            {
+                "playerName": "Ravichandran Ashwin ",
+                "wicketTaker": "c S Dhawan b Arshdeep Singh",
+                "run": "0",
+                "ball": "4",
+                "fours": "0",
+                "sixs": "0",
+                "sr": "0.00"
+            },
+            {
+                "playerName": "Jos Buttler ",
+                "wicketTaker": "c & b Ellis",
+                "run": "19",
+                "ball": "11",
+                "fours": "1",
+                "sixs": "1",
+                "sr": "172.72"
+            },
+            {
+                "playerName": "Sanju Samson (c)†",
+                "wicketTaker": "c sub (MW Short) b Ellis",
+                "run": "42",
+                "ball": "25",
+                "fours": "5",
+                "sixs": "1",
+                "sr": "168.00"
+            },
+            {
+                "playerName": "Devdutt Padikkal ",
+                "wicketTaker": " b Ellis",
+                "run": "21",
+                "ball": "26",
+                "fours": "1",
+                "sixs": "0",
+                "sr": "80.76"
+            },
+            {
+                "playerName": "Riyan Parag ",
+                "wicketTaker": "c Shahrukh Khan b Ellis",
+                "run": "20",
+                "ball": "12",
+                "fours": "1",
+                "sixs": "2",
+                "sr": "166.66"
+            },
+            {
+                "playerName": "Shimron Hetmyer ",
+                "wicketTaker": "run out (Shahrukh Khan/Curran)",
+                "run": "36",
+                "ball": "18",
+                "fours": "1",
+                "sixs": "3",
+                "sr": "200.00"
+            },
+            {
+                "playerName": "Dhruv Jurel ",
+                "wicketTaker": "not out ",
+                "run": "32",
+                "ball": "15",
+                "fours": "3",
+                "sixs": "2",
+                "sr": "213.33"
+            },
+            {
+                "playerName": "Jason Holder ",
+                "wicketTaker": "not out ",
+                "run": "1",
+                "ball": "1",
+                "fours": "0",
+                "sixs": "0",
+                "sr": "100.00"
+            }
+        ],
+        "bowler1": [
+            {
+                "playerName": "Trent Boult",
+                "over": "4",
+                "run": "38",
+                "wicket": "0",
+                "economy": "9.50"
+            },
+            {
+                "playerName": "KM Asif",
+                "over": "4",
+                "run": "54",
+                "wicket": "0",
+                "economy": "13.50"
+            },
+            {
+                "playerName": "Ravichandran Ashwin",
+                "over": "4",
+                "run": "25",
+                "wicket": "1",
+                "economy": "6.25"
+            },
+            {
+                "playerName": "Jason Holder",
+                "over": "4",
+                "run": "29",
+                "wicket": "2",
+                "economy": "7.25"
+            },
+            {
+                "playerName": "Yuzvendra Chahal",
+                "over": "4",
+                "run": "50",
+                "wicket": "1",
+                "economy": "12.50"
+            }
+        ],
+        "bowler2": [
+            {
+                "playerName": "Sam Curran",
+                "over": "4",
+                "run": "44",
+                "wicket": "0",
+                "economy": "11.00"
+            },
+            {
+                "playerName": "Arshdeep Singh",
+                "over": "4",
+                "run": "47",
+                "wicket": "2",
+                "economy": "11.75"
+            },
+            {
+                "playerName": "Harpreet Brar",
+                "over": "2",
+                "run": "15",
+                "wicket": "0",
+                "economy": "7.50"
+            },
+            {
+                "playerName": "Nathan Ellis",
+                "over": "4",
+                "run": "30",
+                "wicket": "4",
+                "economy": "7.50"
+            },
+            {
+                "playerName": "Rahul Chahar",
+                "over": "4",
+                "run": "31",
+                "wicket": "0",
+                "economy": "7.75"
+            },
+            {
+                "playerName": "Sikandar Raza",
+                "over": "2",
+                "run": "24",
+                "wicket": "0",
+                "economy": "12.00"
+            }
+        ]
+    }
+      setMatch(data);
     } catch (e) {
       console.error(e);
     }
@@ -31,80 +283,124 @@ function LiveScore() {
   useEffect(() => {
     fetchScore("http://localhost:5000/pointstable");
   }, []);
-  const {
-    team_name1,
-    team_score1,
-    team_score2,
-    team_name2,
-    team_status,
-    over,
-    crr,
-    batting,
-    batman1,
-    batsman2,
-    bowler1,
-    bowler2,
-  } = score;
-  var team_name = "";
-  var imgLink = "";
-
-  function logoFeatch(team_name) {
-    switch (team_name) {
-      case "RCB":
-        imgLink = "./images/Royal_Challengers_Bangalore_2020.svg.png";
-        break;
-      case "CSK":
-        imgLink = "./images/csk.png";
-        break;
-      case "LSG":
-        imgLink = "./images/lsg.png";
-        break;
-      case "PK":
-        imgLink = "./images/punjab kings.png";
-        break;
-    }
-    return imgLink;
-  }
 
   return (
     <>
-      <h1>LIVESCORE</h1>
-      <div className="liveScore">
-        <div className="scoreboard">
-          <div className="teamname1">
-            <div className="mainLogo">
-              <div className="logoimg">
-                <img src={logoFeatch(team_name1)}></img>
-              </div>
-              <div className="teamName-text">{team_name1}</div>
-            </div>
-            <div className="mainScore">
-              {team_score1}{" "}
-              <spam style={{ fontSize: 20, color: "grey" }}>({over})</spam>
-            </div>
+    <div className="container" style={{backgroundColor:'', width:'40%'}}>
+      <p> IPL 2023</p>
+      <div className="row" >
+        <div className="col-md-6 d-flex justify-content-center align-items-center" style={{backgroundColor:'blue'}}>
+        <div className="d-flex flex-column align-items-center justify-content-center">
+            <img src={match.img1} alt={match.team1}/>
+            <p>{match.team1}</p>
+            <p style={{textAlign:"center"}} >{match.score1}</p>
           </div>
-          <div className="teamname2">
+        </div>
+        {/* <div className="col-md-2"></div> */}
+        <div className="col-md-6 d-flex justify-content-center align-items-center">
+        <div className="d-flex flex-column align-items-center justify-content-center">
+            <img src={match.img2} alt={match.team2}/>
+            <p>{match.team2}</p>
+            <p>{match.score2}</p>
+          </div>
+        </div>
+      </div>
+      <p>{match.crr}</p>
+      <p>{match.status}</p>
+      <div className="row justify-content-between">
+        <div className="col-md-6">
+          <div className="text-center" style={{fontSize:25, backgroundColor:'transparent'}}>
+            <button className="w-100" onClick={toggleBatting1} style={buttonStyle1}> {match.team1}</button>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="text-center" style={{fontSize:25, backgroundColor:'transparent'}}> 
+            <button className="w-100" onClick={toggleBatting2} style={buttonStyle2}>{match.team2}</button>
+          </div>
+        </div>
+      </div>
+      {/* </div> */}
+        <div className="row">
+          <div className={`col-md-12 container2 ${containerClass}`}>
+
+          {showBatting1 && (
             <div>
-              <div className="mainScore2">{team_score2}</div>
-              <div className="mainLogo2">
-                <div className="logoimg">
-                  <img src={logoFeatch(team_name2)}></img>
+              <div>
+                  {match.batting1 && match.batting1.length > 0 ? (
+                    match.batting1.map((player, index) => (
+                      <div key={index}>
+                        <p>Player Name: {player.playerName}</p>
+                        <p>Wicket Taker: {player.wicketTaker}</p>
+                        <p>Runs: {player.run}</p>
+                        <p>Balls: {player.ball}</p>
+                        <p>Fours: {player.fours}</p>
+                        <p>Sixes: {player.sixs}</p>
+                        <p>Strike Rate: {player.sr}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <p>No batting statistics available.</p>
+                  )}
                 </div>
-                <div className="teamName-text1">{team_name2}</div>
-              </div>
+                {match.bowler1 && match.bowler1.length > 0 ? (
+                  <div>
+                    <h3>Bowling Statistics:</h3>
+                    {match.bowler1.map((player, index) => (
+                      <div key={index}>
+                        <p>Player Name: {player.playerName}</p>
+                        <p>Overs: {player.over}</p>
+                        <p>Runs Conceded: {player.run}</p>
+                        <p>Wickets Taken: {player.wicket}</p>
+                        <p>Economy: {player.economy}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p>No bowling statistics available.</p>
+                )}
             </div>
+          )}
+          {showBatting2 && 
+            <div> 
+              <div>
+                {match.batting2 && match.batting2.length > 0 ? (
+                  match.batting2.map((player, index) => (
+                    <div key={index}>
+                      <p>Player Name: {player.playerName}</p>
+                      <p>Wicket Taker: {player.wicketTaker}</p>
+                      <p>Runs: {player.run}</p>
+                      <p>Balls: {player.ball}</p>
+                      <p>Fours: {player.fours}</p>
+                      <p>Sixes: {player.sixs}</p>
+                      <p>Strike Rate: {player.sr}</p>
+                    </div>
+                  ))
+                  ) : (
+                    <p>No batting statistics available.</p>
+                    )}
+              </div>
+              {match.bowler2 && match.bowler2.length > 0 ? (
+                <div>
+                  <h3>Bowling Statistics:</h3>
+                  {match.bowler2.map((player, index) => (
+                    <div key={index}>
+                      <p>Player Name: {player.playerName}</p>
+                      <p>Overs: {player.over}</p>
+                      <p>Runs Conceded: {player.run}</p>
+                      <p>Wickets Taken: {player.wicket}</p>
+                      <p>Economy: {player.economy}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>No bowling statistics available.</p>
+              )}
+            </div>}
           </div>
-          <div className="status">{team_status}</div>
         </div>
 
-        {/* <div>
-        <button className="btn1">{team_name1}</button>
-        <button className="btn2">{team_name2}</button>
-      </div> */}
+    </div>
 
-        {/* <div className="scoreCard"></div>
-          <div>{team_name1}</div> */}
-      </div>
     </>
   );
 }
