@@ -319,83 +319,170 @@ function LiveScore() {
           </div>
         </div>
       </div>
+      
+      {/* all table stats from down below  */}
       {/* </div> */}
-        <div className="row">
-          <div className={`col-md-12 container2 ${containerClass}`}>
+        <div className="row justify-content-between">
+          <div className={'col-md-12'} style={{marginLeft:'-3.5%'}}>
 
           {showBatting1 && (
             <div>
-              <div>
-                  {match.batting1 && match.batting1.length > 0 ? (
-                    match.batting1.map((player, index) => (
-                      <div key={index}>
-                        <p>Player Name: {player.playerName}</p>
-                        <p>Wicket Taker: {player.wicketTaker}</p>
-                        <p>Runs: {player.run}</p>
-                        <p>Balls: {player.ball}</p>
-                        <p>Fours: {player.fours}</p>
-                        <p>Sixes: {player.sixs}</p>
-                        <p>Strike Rate: {player.sr}</p>
-                      </div>
-                    ))
-                  ) : (
-                    <p>No batting statistics available.</p>
-                  )}
+                <div>
+                  <table>
+                    <thead >
+                      <tr >
+                        <th class="col-8 smaller">Batting</th>
+                        <th class="col-2"></th>
+                        <th className="smaller alignCenter">R</th>
+                        <th className="smaller alignCenter">B</th>
+                        <th className="smaller alignCenter">4s</th>
+                        <th className="smaller alignCenter">6s</th>
+                        <th className="smaller alignCenter">S/R</th>
+                      </tr>
+                    </thead>
+                  
+                    <tbody>
+                      {match.batting1 && match.batting1.length > 0 ? (
+                        <>
+                          {match.batting1.map((player, index) => (
+                            <>
+                              <tr>
+                                <td className="col-8">
+                                  <span className="highlighted">{player.playerName}</span>
+                                  <br />
+                                  {player.wicketTaker}  
+                                </td>
+                                <td className="col-2"></td>
+                                <td className="highlighted alignRight">{player.run}</td>
+                                <td className="highlighted alignRight">{player.ball}</td>
+                                <td className="highlighted alignRight">{player.fours}</td>
+                                <td className="highlighted alignRight">{player.sixs}</td>
+                                <td className="highlighted alignRight">{player.sr}</td>
+                              </tr>
+                            </>
+                          ))}
+                        </>
+                          ) : (
+                            <p>No batting statistics available.</p>
+                            )}
+                      </tbody>
+                  </table>
                 </div>
-                {match.bowler1 && match.bowler1.length > 0 ? (
-                  <div>
-                    <h3>Bowling Statistics:</h3>
-                    {match.bowler1.map((player, index) => (
-                      <div key={index}>
-                        <p>Player Name: {player.playerName}</p>
-                        <p>Overs: {player.over}</p>
-                        <p>Runs Conceded: {player.run}</p>
-                        <p>Wickets Taken: {player.wicket}</p>
-                        <p>Economy: {player.economy}</p>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p>No bowling statistics available.</p>
-                )}
+                <div>
+                  <table>
+                  <thead >
+                      <tr >
+                        <th class="col-8 smaller">Bowling</th>
+                        <th class="col-2"></th>
+                        <th className="smaller alignRight">O</th>
+                        <th className="smaller alignRight">R</th>
+                        <th className="smaller alignRight">W</th>
+                        <th className="smaller alignRight">Econ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {match.bowler1 && match.bowler1.length > 0 ? (
+                          <>
+                            {match.bowler1.map((player, index) => (
+                              <>
+                      <tr>
+                                <td className="col-8 highlighted">{player.playerName}</td>
+                                <td className="col-2"></td>
+                                <td class='alignRight highlighted'> {player.over}</td>
+                                <td class='alignRight highlighted'> {player.run}</td>
+                                <td class='alignRight highlighted'> {player.wicket}</td>
+                                <td class='alignRight highlighted'> {player.economy}</td>
+                            </tr>
+                              </>
+                            ))}
+                          </>
+                        ) : (
+                          <p>No bowling statistics available.</p>
+                          )}
+                  </tbody>
+                  </table>
+                </div>
             </div>
           )}
-          {showBatting2 && 
-            <div> 
-              <div>
-                {match.batting2 && match.batting2.length > 0 ? (
-                  match.batting2.map((player, index) => (
-                    <div key={index}>
-                      <p>Player Name: {player.playerName}</p>
-                      <p>Wicket Taker: {player.wicketTaker}</p>
-                      <p>Runs: {player.run}</p>
-                      <p>Balls: {player.ball}</p>
-                      <p>Fours: {player.fours}</p>
-                      <p>Sixes: {player.sixs}</p>
-                      <p>Strike Rate: {player.sr}</p>
-                    </div>
-                  ))
-                  ) : (
-                    <p>No batting statistics available.</p>
-                    )}
-              </div>
-              {match.bowler2 && match.bowler2.length > 0 ? (
+          {showBatting2 && (
+            <div>
                 <div>
-                  <h3>Bowling Statistics:</h3>
-                  {match.bowler2.map((player, index) => (
-                    <div key={index}>
-                      <p>Player Name: {player.playerName}</p>
-                      <p>Overs: {player.over}</p>
-                      <p>Runs Conceded: {player.run}</p>
-                      <p>Wickets Taken: {player.wicket}</p>
-                      <p>Economy: {player.economy}</p>
-                    </div>
-                  ))}
+                  <table>
+                    <thead >
+                      <tr >
+                        <th class="col-8 smaller">Batting</th>
+                        <th class="col-2"></th>
+                        <th className="smaller alignCenter">R</th>
+                        <th className="smaller alignCenter">B</th>
+                        <th className="smaller alignCenter">4s</th>
+                        <th className="smaller alignCenter">6s</th>
+                        <th className="smaller alignCenter">S/R</th>
+                      </tr>
+                    </thead>
+                  
+                    <tbody>
+                      {match.batting2 && match.batting2.length > 0 ? (
+                        <>
+                          {match.batting2.map((player, index) => (
+                            <>
+                              <tr>
+                                <td className="col-8">
+                                  <span className="highlighted">{player.playerName}</span>
+                                  <br />
+                                  {player.wicketTaker}  
+                                </td>
+                                <td className="col-2"></td>
+                                <td className="highlighted alignRight">{player.run}</td>
+                                <td className="highlighted alignRight">{player.ball}</td>
+                                <td className="highlighted alignRight">{player.fours}</td>
+                                <td className="highlighted alignRight">{player.sixs}</td>
+                                <td className="highlighted alignRight">{player.sr}</td>
+                              </tr>
+                            </>
+                          ))}
+                        </>
+                          ) : (
+                            <p>No batting statistics available.</p>
+                            )}
+                      </tbody>
+                  </table>
                 </div>
-              ) : (
-                <p>No bowling statistics available.</p>
-              )}
-            </div>}
+                <div>
+                  <table>
+                  <thead >
+                      <tr >
+                        <th class="col-8 smaller">Bowling</th>
+                        <th class="col-2"></th>
+                        <th className="smaller alignRight">O</th>
+                        <th className="smaller alignRight">R</th>
+                        <th className="smaller alignRight">W</th>
+                        <th className="smaller alignRight">Econ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {match.bowler2 && match.bowler2.length > 0 ? (
+                          <>
+                            {match.bowler2.map((player, index) => (
+                              <>
+                      <tr>
+                                <td className="col-8 highlighted">{player.playerName}</td>
+                                <td className="col-2"></td>
+                                <td class='alignRight highlighted'> {player.over}</td>
+                                <td class='alignRight highlighted'> {player.run}</td>
+                                <td class='alignRight highlighted'> {player.wicket}</td>
+                                <td class='alignRight highlighted'> {player.economy}</td>
+                            </tr>
+                              </>
+                            ))}
+                          </>
+                        ) : (
+                          <p>No bowling statistics available.</p>
+                          )}
+                  </tbody>
+                  </table>
+                </div>
+            </div>
+          )}
           </div>
         </div>
 
