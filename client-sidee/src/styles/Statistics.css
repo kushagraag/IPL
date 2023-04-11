@@ -1,0 +1,33 @@
+.alignRight {
+    text-align: right;
+}
+.alignCenter {
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    border: 0;
+    /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4); */
+    margin: 30px;
+    padding: 0;
+    width: 100%;
+  }
+  
+  thead th {
+    color: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    font-weight: normal;
+    padding: 10px;
+    text-transform: uppercase;
+  }
+  
+    tbody td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom-style:inset;
+    padding: 10px;
+    opacity: 80%;
+  }
+  
+.container {
+}
