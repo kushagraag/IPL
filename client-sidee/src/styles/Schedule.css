@@ -1,0 +1,23 @@
+.container {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 0;
+}
+.boxcontainer {
+	margin-left: 100px;
+	margin-right: 100px;
+	/* padding-left: 2rem;
+	padding-right: 2rem; */
+	padding: 2.5rem;
+}
+
+
+/* .date .teams .time .result {
+	width: 20%;
+	float: left;
+	padding : 30px;
+	font-size: 30px;
+	padding-left: 100px;
+	height:190px;
+} */
+
