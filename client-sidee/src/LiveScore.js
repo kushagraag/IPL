@@ -5,20 +5,20 @@ function LiveScore() {
 
   const [showBatting1, setShowBatting1] = useState(true);
   const [showBatting2, setShowBatting2] = useState(false);
-  const [containerClass, setContainerClass] = useState("");
+  // const [containerClass, setContainerClass] = useState("");
 
 
   const toggleBatting1 = () => {
     setShowBatting1(true);
     setShowBatting2(false);
-    setContainerClass("slide-right");
+    // setContainerClass("slide-right");
 
   };
 
   const toggleBatting2 = () => {
     setShowBatting1(false);
     setShowBatting2(true);
-    setContainerClass("slide-left");
+    // setContainerClass("slide-left");
 
   };
 

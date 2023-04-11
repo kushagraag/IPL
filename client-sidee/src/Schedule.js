@@ -18,36 +18,20 @@ function Schedule() {
     useEffect(() => {
         fetchTeams("http://localhost:5000/schedule");
     }, []);
-    const score1 = "123/2"
-    const score2 = "122/3"
+
     const teamWin1 = false
     const teamWin2 = true
     return (
-        <> {/* <h1 style={{textAlign:"center" , margin:"15px" }}>Schedule</h1> */}
-            {/* <div class="container">
-      <div class="heading">Date</div>
-      <div class="heading">Match Details</div>
-      <div class="heading"> Result</div>
-    </div> */}
-
-            {/* <hr size="3" width="100%" color="black" />   */}
-
-            {/* "date": "Tue, 11 Apr",
-        "time": "Tues, 11 Apr, 2:00 PM",
-        "place": "16th Match (N), Delhi, April 11, 2023, Indian Premier League",
-        "team1": "Delhi Capitals",
-        "team2": "Mumbai Indians",
-        "score1": "scr 1",
-        "score2": "scr2",
-        "result": "Match yet to begin" */}
+        <> 
             {
             schedules.map((item, index) => {
                 const {
                     date,
                     time,
-                    place,
                     team1,
                     team2,
+                    team1_score,
+                    team2_score,
                     result
                 } = item;
                 // shadow adjustment is pending 
@@ -74,16 +58,16 @@ function Schedule() {
                                     <div style={{fontSize:20}} class="teams">
                                         <div  style={{fontWeight: teamWin1? 600:''}} class="row">
                                             <span class="col-8">{team1} </span>
-                                            <span class="col-4 score" style={{textAlign:'right'}}>{score1}</span>
+                                            <span class="col-4 score" style={{textAlign:'right'}}>{team1_score}</span>
                                         </div>
                                         <div style={{fontWeight: teamWin2? 600: ''}}class="row">
                                             <span class="col-8">{team2} </span>
-                                            <span class="col-4 score" style={{textAlign:'right'}}>{score2}</span>
+                                            <span class="col-4 score" style={{textAlign:'right'}}>{team2_score}</span>
                                         </div>
                                     </div>
-                                    <div style={{marginTop:12}} class="result">
+                                    {/* <div style={{marginTop:12}} class="result">
                                         <div>{result}</div>
-                                    </div>
+                                    </div> */}
                                 </span>
                             </div>
                         </div>
