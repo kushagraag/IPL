@@ -65,7 +65,7 @@ function handleScoreCard(html) {
           bowler1.push(obj);
         }
       }
-      // console.log(bowler1);
+
     } else if (j === 3) {
       for (let i = 0; i < rowArr.length; i = i + 1) {
         const allCol = $(rowArr[i]).find("td");
