@@ -40,7 +40,7 @@ const BestEconomyRates = ({stats}) => {
                 </thead>
                 <tbody>
                     <> {
-                        stats.bestEconomyRates && stats.bestEconomyRates.length > 0 && stats.bestEconomyRates.map((player) => (
+                        stats && stats.length > 0 && stats.map((player) => (
                             <>
                                 <tr>
                                     <td class="col-7 highlighted">

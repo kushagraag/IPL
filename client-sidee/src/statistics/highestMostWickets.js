@@ -20,7 +20,7 @@ const HighestMostWickets = ({stats}) => {
                     paddingTop: '20px'
                 }
             }>
-                <p>HIGHEST MOST WICKETS</p>
+                <p>MOST WICKETS</p>
             </div>
             <table style={
                 {
@@ -40,7 +40,7 @@ const HighestMostWickets = ({stats}) => {
                 </thead>
                 <tbody>
                     <> {
-                        stats.highestMostWickets && stats.highestMostWickets.length > 0 && stats.highestMostWickets.map((player) => (
+                        stats && stats.length > 0 && stats.map((player) => (
                             <>
                                 <tr>
                                     <td class="col-7 highlighted">
