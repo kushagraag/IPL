@@ -3,11 +3,17 @@ import LiveScore from "./LiveScore";
 import PointsTable from "./PointsTable";
 import Schedule from "./Schedule";
 import Statistic from "./Statistic";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import PublicRoute from "./components/PublicRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Userhome from "./pages/Userhome";
 function App() {
   const theme = {
     color: {
@@ -37,13 +43,15 @@ function App() {
           <Header></Header>
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/livescore" element={<LiveScore />}></Route>
-            <Route path="/pointstable" element={<PointsTable />}></Route>
-            <Route path="/schedule" element={<Schedule />}></Route>
-            <Route path="/statistic" element={<Statistic />}></Route>
-
+            <Route path="/livescore" element={<PublicRoute><LiveScore /></PublicRoute>}></Route>
+            <Route path="/pointstable" element={<PublicRoute><PointsTable /></PublicRoute>}></Route>
+            <Route path="/schedule" element={<PublicRoute><Schedule /></PublicRoute>}></Route>
+            <Route path="/statistic" element={<PublicRoute><Statistic /></PublicRoute>}></Route>
+            <Route path="/login" element={<PublicRoute><Login /></PublicRoute>}></Route>
+            <Route path="/register" element={<PublicRoute><Register /></PublicRoute>}></Route>
+            <Route path="/userhome" element={<ProtectedRoute><Userhome /></ProtectedRoute>}></Route>
           </Routes>
-          {/* <Footer></Footer> */}
+          
         </BrowserRouter>
       </ThemeProvider>
     </>

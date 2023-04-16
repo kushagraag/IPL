@@ -22,6 +22,9 @@ function Navbar() {
           <li>
             <NavLink className="navbar-link" to="/statistic">statistic</NavLink>
           </li>
+          <li>
+            <NavLink className="navbar-link" to="/login">login</NavLink>
+          </li>
         </ul>
       </div>
     </Nav>

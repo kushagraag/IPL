@@ -13,8 +13,12 @@ const {highestBestBowling} = require("./componests/stats/bestbowling");
 const {bestBowlingAvg} = require("./componests/stats/bestbowlingavg");
 const {bestEconomyRate} = require("./componests/stats/besteconomy");
 const {bestBowlingSr} = require("./componests/stats/bestbowlingsr");
+const usersRoutes = require("./routes/userRoutes")
 const app = express();
+require('dotenv').config();
 const cors = require("cors");
+
+const dbConfig = require("./config/dbConfig");
 
 app.use(cors({origin:"http://localhost:3000" , }))
 
@@ -80,6 +84,12 @@ app.get("/stats/bestbowlingsr", async(req,res)=>{
   var data = await bestBowlingSr("https://stats.espncricinfo.com/ci/engine/records/bowling/best_career_strike_rate.html?id=15129;type=tournament");
   res.send(data);
 });
+
+//-------------------------------------------------------------------------------------
+app.use(express.json());
+
+app.use("/user" , usersRoutes);
+
 app.listen(5000, () => {
   console.log("server started");
 });
