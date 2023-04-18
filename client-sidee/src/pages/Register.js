@@ -4,23 +4,30 @@ import "../resources/global.css";
 // import { Link } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 // import { message } from "antd";
 // import { Form,FormGroup,Label,Input,Col, CardHeader ,FormFeedback, FormText} from 'reactstrap';
 
 function Register() {
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const finish = async(values) => {
     console.log(values);
     try{
+      dispatch(ShowLoading());
         const response = await axios.post("http://localhost:5000/user/register",values);
+        dispatch(HideLoading());
         if(response.data.success){
             message.success(response.data.message);
+            navigate("/login");
         }
         else{
             message.error(response.data.message);
         }
     }
     catch(error){
+      dispatch(HideLoading());
         message.error(error.message);
     }
   };

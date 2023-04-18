@@ -3,12 +3,17 @@ import { Form,message } from "antd";
 import axios from "axios";
 import "../resources/global.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { HideLoading, ShowLoading } from "../redux/alertsSlice";
 function Login(){
+  const dispatch = useDispatch();
     const navigate = useNavigate();
     const finish = async(values) => {
         console.log(values)
         try{
+          dispatch(ShowLoading());
             const response = await axios.post("http://localhost:5000/user/login",values);
+            dispatch(HideLoading());
             if(response.data.success){
                 message.success(response.data.message);
                 localStorage.setItem("token",response.data.data);
@@ -19,6 +24,7 @@ function Login(){
             }
         }
         catch(error){
+          dispatch(HideLoading());
             message.error(error.message);
         }
       };

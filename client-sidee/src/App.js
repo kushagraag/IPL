@@ -14,7 +14,15 @@ import Login from "./pages/Login";
 import PublicRoute from "./components/PublicRoute";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Userhome from "./pages/Userhome";
+import Loader from "./components/Loader";
+import { useSelector } from "react-redux";
+import AdminHome from "./pages/Admin/AdminHome";
+import AdminMatches from "./pages/Admin/AdminMatches";
+import AdminUsers from "./pages/Admin/AdminUsers";
+import BookNow from "./pages/BookNow";
+import Bookings from "./pages/Bookings";
 function App() {
+  const {loading} = useSelector(state => state.alerts);
   const theme = {
     color: {
       heading: "rgb(24 24 29)",
@@ -41,6 +49,7 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <Header></Header>
+          {loading && <Loader></Loader>}
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/livescore" element={<PublicRoute><LiveScore /></PublicRoute>}></Route>
@@ -50,6 +59,11 @@ function App() {
             <Route path="/login" element={<PublicRoute><Login /></PublicRoute>}></Route>
             <Route path="/register" element={<PublicRoute><Register /></PublicRoute>}></Route>
             <Route path="/userhome" element={<ProtectedRoute><Userhome /></ProtectedRoute>}></Route>
+            <Route path="/admin" element={<ProtectedRoute><AdminHome /></ProtectedRoute>}></Route>
+            <Route path="/admin-matches" element={<ProtectedRoute><AdminMatches /></ProtectedRoute>}></Route>
+            <Route path="/admin-users" element={<ProtectedRoute><AdminUsers /></ProtectedRoute>}></Route>
+            <Route path="/book-now/:id" element={<ProtectedRoute><BookNow /></ProtectedRoute>}></Route>
+            <Route path="/booking" element={<ProtectedRoute><Bookings /></ProtectedRoute>}></Route>
           </Routes>
           
         </BrowserRouter>

@@ -82,7 +82,7 @@ router.post("/get-user-by-id", authMiddleware, async (req, res) => {
     res.send({
       message: "User featch successfully",
       success: true,
-      data: null,
+      data: user,
     });
   } catch (error) {
     res.send({

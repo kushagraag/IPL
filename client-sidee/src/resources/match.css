@@ -1,0 +1,28 @@
+.match-container{
+    width:900px;
+    border: 2px solid grey;
+    padding: 10px;
+
+}
+
+.seat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border: 2px solid gray;
+}
+
+.selected-seat{
+    background-color: green;
+    color: white;
+    cursor: pointer;
+
+}
+
+.booked-seat{
+    background-color: rgb(174, 23, 23);
+    color: white;
+    pointer-events: none;
+    cursor: disabled;
+}

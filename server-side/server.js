@@ -13,7 +13,9 @@ const {highestBestBowling} = require("./componests/stats/bestbowling");
 const {bestBowlingAvg} = require("./componests/stats/bestbowlingavg");
 const {bestEconomyRate} = require("./componests/stats/besteconomy");
 const {bestBowlingSr} = require("./componests/stats/bestbowlingsr");
-const usersRoutes = require("./routes/userRoutes")
+const usersRoutes = require("./routes/userRoutes");
+const matchRoute = require("./routes/matchesRoute");
+const bookingRoutes = require("./routes/bookingRoutes");
 const app = express();
 require('dotenv').config();
 const cors = require("cors");
@@ -89,7 +91,8 @@ app.get("/stats/bestbowlingsr", async(req,res)=>{
 app.use(express.json());
 
 app.use("/user" , usersRoutes);
-
+app.use('/matches', matchRoute);
+app.use("/bookings",bookingRoutes);
 app.listen(5000, () => {
   console.log("server started");
 });
