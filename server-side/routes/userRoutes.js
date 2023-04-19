@@ -42,31 +42,38 @@ router.post("/login", async (req, res) => {
         success: false,
         data: null,
       });
-    } else {
-      const passwordMatch = await bcrypt.compare(
-        req.body.password,
-        userExist.password
-      );
-      if (!passwordMatch) {
-        return res.send({
-          message: "Please enter the correct password",
-          success: false,
-          data: null,
-        });
-      }
-      const token = jwt.sign(
-        {
-          userId: userExist._id,
-        },
-        process.env.jwt_secret,
-        { expiresIn: "1d" }
-      );
-      res.send({
-        message: "User login successfully",
-        success: true,
-        data: token,
+    }
+    if(userExist.isBlocked === true){
+      return res.send({
+        message: "User is blocked",
+        success: false,
+        data: null,
       });
     }
+
+    const passwordMatch = await bcrypt.compare(
+      req.body.password,
+      userExist.password
+    );
+    if (!passwordMatch) {
+      return res.send({
+        message: "Please enter the correct password",
+        success: false,
+        data: null,
+      });
+    }
+    const token = jwt.sign(
+      {
+        userId: userExist._id,
+      },
+      process.env.jwt_secret,
+      { expiresIn: "1d" }
+    );
+    res.send({
+      message: "User login successfully",
+      success: true,
+      data: token,
+    });
   } catch (error) {
     res.send({
       message: error.message,
@@ -83,6 +90,41 @@ router.post("/get-user-by-id", authMiddleware, async (req, res) => {
       message: "User featch successfully",
       success: true,
       data: user,
+    });
+  } catch (error) {
+    res.send({
+      message: error.message,
+      success: false,
+      data: null,
+    });
+  }
+});
+
+router.post("/get-all-users", authMiddleware, async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.send({
+      message: "User fetch successfully",
+      success: true,
+      data: users,
+    });
+  } catch (error) {
+    res.send({
+      message: error.message,
+      success: false,
+      data: null,
+    });
+  }
+});
+
+router.post("/update-user-permission", authMiddleware, async (req, res) => {
+  try {
+    console.log(req.body);
+    await User.findByIdAndUpdate(req.body._id, req.body);
+    res.send({
+      message: "User permission updated successfully",
+      success: true,
+      data: null,
     });
   } catch (error) {
     res.send({

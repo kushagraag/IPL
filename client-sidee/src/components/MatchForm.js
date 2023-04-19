@@ -13,6 +13,7 @@ function MatchForm({ showMatchForm, setShowMatchForm , type,getMatchess,seletedM
         response = await axiosInstance.post('http://localhost:5000/matches/add-match',values)
       }
       else{
+        console.log(values);
         response = await axiosInstance.post("http://localhost:5000/matches/update-match",{
           ...values,
           _id: seletedMatch._id
@@ -82,12 +83,20 @@ function MatchForm({ showMatchForm, setShowMatchForm , type,getMatchess,seletedM
           </Col>
           <Col lg={12} xs={24}>
             <Form.Item label="Time" name="time">
-              <input type="text"></input>
+              <input type="time"></input>
             </Form.Item>
           </Col>
           <Col lg={12} xs={24}>
             <Form.Item label="Fare (in Rs)" name="fare">
               <input type="number"></input>
+            </Form.Item>
+          </Col>
+          <Col lg={12} xs={24}>
+            <Form.Item label="Status" name="seatsAvailable">
+              <select name="" id="">
+                <option value="Yet to start">Yet to start</option> 
+                <option value="Completed">Completed</option> 
+              </select>
             </Form.Item>
           </Col>
         </Row>

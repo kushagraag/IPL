@@ -22,6 +22,7 @@ router.post('/add-match', authMiddleware,async(req,res)=>{
 
 router.post("/get-all-matches" ,authMiddleware,async(req,res) =>{
     try{
+        // console.log(req.body);
         const matches = await Match.find();
         return res.status(200).send({
             success:true,

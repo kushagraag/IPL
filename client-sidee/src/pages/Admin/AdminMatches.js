@@ -184,7 +184,8 @@ function AdminMatches() {
                     <td class="alignLeft highlighted">{player.capacity}</td>
                     <td class="alignLeft highlighted">{player.place}</td>
                     <td class="alignLeft highlighted">{player.date}</td>
-                    <td class="alignLeft highlighted">{player.status}</td>
+                    <td class="alignLeft highlighted">{player.seatsAvailable
+}</td>
                     <td class="alignLeft highlighted">
                       
                         <div className="d-flex gap-3">

@@ -1,7 +1,7 @@
 import { Col, message, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SeatSelection from "../components/SeatSelection";
 import { axiosInstance } from "../helper/axiosInstance";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
@@ -10,6 +10,7 @@ function BookNow() {
   const params = useParams();
   const dispatch = useDispatch();
   const [match, setMatch] = useState(null);
+  const navigate = useNavigate();
   const[selectedSeat, setSelectedSeat] = useState(null);
   const getMatch = async () => {
     try {
@@ -41,6 +42,7 @@ function BookNow() {
         dispatch(HideLoading());
         if(response.data.success){
             message.success(response.data.message);
+            navigate("/booking");
         }
         else{
             message.error(response.data.message)

@@ -30,6 +30,7 @@ router.post("/book-seat",authMiddleware,async(req,res)=>{
 
 router.post("/get-bookings-by-user-id",authMiddleware,async(req,res)=>{
     try{
+        console.log(req.body)
         const bookings = await Booking.find({user:req.body.userId})
         .populate("match")
         .populate("user")
