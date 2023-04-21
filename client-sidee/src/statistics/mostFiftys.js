@@ -40,7 +40,7 @@ const MostFiftys = ({stats}) => {
                 </thead>
                 <tbody>
                     <> {
-                        stats.mostFiftys && stats.mostFiftys.length > 0 && stats.mostFiftys.map((player) => (
+                        stats && stats.length > 0 && stats.map((player) => (
                             <>
                                 <tr>
                                     <td class="col-7 highlighted">

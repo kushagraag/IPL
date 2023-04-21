@@ -20,7 +20,7 @@ const handleHighestScore = (html) => {
   const table = $(".engineTable");
   const body = $(table[0]).find("tbody");
   const trArr = $(body).find("tr");
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     const allCol = $(trArr[i]).find(".data1 td");
     var playerName = $(allCol[0]).text();
     var run = $(allCol[1]).text();

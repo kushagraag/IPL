@@ -20,7 +20,7 @@ const HighestBestBowlings = ({stats}) => {
                     paddingTop: '20px'
                 }
             }>
-                <p>HIGHEST BEST BOWLINGS</p>
+                <p>BEST BOWLINGS FIGURES IN INNINGS</p>
             </div>
             <table style={
                 {
@@ -40,7 +40,7 @@ const HighestBestBowlings = ({stats}) => {
                 </thead>
                 <tbody>
                     <> {
-                        stats.highestBestBowlings && stats.highestBestBowlings.length > 0 && stats.highestBestBowlings.map((player) => (
+                        stats && stats.length > 0 && stats.map((player) => (
                             <>
                                 <tr>
                                     <td class="col-7 highlighted">

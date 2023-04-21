@@ -14,6 +14,9 @@ async function handleLiveScore(html){
     const scoreArr = $(".ds-text-compact-m.ds-text-typo.ds-text-right.ds-whitespace-nowrap");
     let status = $(".ds-text-tight-m.ds-font-regular.ds-truncate.ds-text-typo").text();
     let crrArr = $(".ds-text-tight-s.ds-font-regular.ds-overflow-x-auto.ds-scrollbar-hide.ds-whitespace-nowrap.ds-mt-1.ds-text-typo-mid3").text();
+    let imgArr = $(".ci-team-score.ds-flex.ds-justify-between.ds-items-center.ds-text-typo.ds-mb-2 img");
+    let team1img = $(imgArr[0]).attr("src");
+    // console.log(team1img);
     let team1 = $(teamArr[0]).text();
     let team2 = $(teamArr[1]).text();
     let score1 = $(scoreArr[0]).text();

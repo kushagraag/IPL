@@ -1,6 +1,7 @@
 import React from 'react';
 
 const HighestScores = ({ stats }) => {
+  // console.log(stats)
   return (
     <div className='container' style={{
       maxWidth:'100%',
@@ -26,7 +27,7 @@ const HighestScores = ({ stats }) => {
         </thead>
         <tbody>
           <>
-            {stats.highestScores && stats.highestScores.length > 0 && stats.highestScores.map((player) => (
+            {stats && stats.length > 0 && stats.map((player) => (
             <>
             <tr>
               <td class="col-5 highlighted" >

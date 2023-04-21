@@ -41,7 +41,7 @@ const BestBowlingAvgs = ({stats}) => {
                 </thead>
                 <tbody>
                     <> {
-                        stats.bestBowlingAvgs && stats.bestBowlingAvgs.length > 0 && stats.bestBowlingAvgs.map((player) => (
+                        stats && stats.length > 0 && stats.map((player) => (
                             <>
                                 <tr>
                                     <td class="col-7 highlighted">

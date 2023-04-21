@@ -1,6 +1,7 @@
 import React from 'react';
 
-const MostRuns = ({ stats }) => {
+const MostRuns = ({ item }) => {
+  console.log(item);
   return (
     <div className='container' style={{
       maxWidth:'100%',
@@ -29,7 +30,7 @@ const MostRuns = ({ stats }) => {
         </thead>
         <tbody>
           <>
-            {stats.mostruns && stats.mostruns.length > 0 && stats.mostruns.map((player) => (
+            {item && item.length > 0 && item.map((player) => (
             <>
             <tr>
               <td class="col-5 highlighted" >

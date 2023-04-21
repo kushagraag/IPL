@@ -40,7 +40,7 @@ const BestBowlingSrs = ({stats}) => {
                 </thead>
                 <tbody>
                     <> {
-                        stats.bestBowlingSrs && stats.bestBowlingSrs.length > 0 && stats.bestBowlingSrs.map((player) => (
+                        stats && stats.length > 0 && stats.map((player) => (
                             <>
                                 <tr>
                                     <td class="col-7 highlighted">

@@ -27,7 +27,7 @@ const HighestAverages = ({ stats }) => {
         </thead>
         <tbody>
           <>
-            {stats.highestAverages && stats.highestAverages.length > 0 && stats.highestAverages.map((player) => (
+            {stats && stats.length > 0 && stats.map((player) => (
             <>
             <tr>
               <td class="col-7 highlighted" >
