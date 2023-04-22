@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: react-js
-        image: deepak18/ipl_client
+        image: eovnstd/ipl_client
         resources:
           limits:
             memory: "356Mi"
