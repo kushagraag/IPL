@@ -19,10 +19,10 @@
         dest: ./
         
     - name: pull docker server image
-      shell: docker pull deepak18/ipl_server
+      shell: docker pull eovnstd/ipl_server
 
     - name: pull docker client image
-      shell: docker pull deepak18/ipl_client
+      shell: docker pull eovnstd/ipl_client
 
     - name: run the server menifest file
       shell: kubectl apply -f server-deployment.yml
