@@ -1,0 +1,17 @@
+---
+- name: Pull docker image ipl
+  hosts: all
+  tasks:
+  
+    - name: Start docker service
+      service:
+        name: docker
+        state: started
+        
+    - name: pull docker server image
+      shell: docker pull deepak18/ipl_server
+
+    - name: pull docker client image
+      shell: docker pull deepak18/ipl_client
+      
+    
