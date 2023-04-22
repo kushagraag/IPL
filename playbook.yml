@@ -7,11 +7,27 @@
       service:
         name: docker
         state: started
+
+    - name: copy server deployment file from folder to remote host
+      copy:
+        src: ./server-deployment.yml
+        dest: ./
+
+    - name: copy client deployment file from folder to remote host
+      copy:
+        src: ./client-deployment.yml
+        dest: ./
         
     - name: pull docker server image
       shell: docker pull deepak18/ipl_server
 
     - name: pull docker client image
       shell: docker pull deepak18/ipl_client
+
+    - name: run the server menifest file
+      shell: kubectl apply -f server-deployment.yml
+
+    - name: run the client menifest file
+      shell: kubectl apply -f client-deployment.yml
       
     
