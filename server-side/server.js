@@ -22,7 +22,7 @@ const cors = require("cors");
 
 const dbConfig = require("./config/dbConfig");
 
-app.use(cors({origin:"http://localhost:3000" , }))
+// app.use(cors({origin:"http://localhost:3000" , }))
 
 app.get("/pointstable", async(req, res) => {
   const data = await point();
