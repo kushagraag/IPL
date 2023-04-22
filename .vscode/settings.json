@@ -1,0 +1,5 @@
+{
+	"yaml.schemas": {
+		"kubernetes://schema/v1%40service": "file:///home/kushagra-home/Documents/IPL%20Final/IPL_kushagra/IPL/client-deployment.yml"
+	}
+}

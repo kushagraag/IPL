@@ -15,10 +15,6 @@ spec:
       containers:
       - name: react-js
         image: eovnstd/ipl_client
-        resources:
-          limits:
-            memory: "356Mi"
-            cpu: "500m"
         ports:
         - containerPort: 3000
 ---

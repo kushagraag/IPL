@@ -15,10 +15,6 @@ spec:
       containers:
       - name: node-js
         image: eovnstd/ipl_server
-        resources:
-          limits:
-            memory: "356Mi"
-            cpu: "500m"
         ports:
         - containerPort: 5000
 ---
