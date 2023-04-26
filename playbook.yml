@@ -41,7 +41,7 @@
     - name: Output backend service URL
       shell: echo "{{ node-js-service.stdout }}"
     
-    -name: random echoing
+    - name: random echoing
       shell: echo "random things"
 
     - name: run the client manifest file
