@@ -1,4 +1,3 @@
----
 - name: Pull docker image ipl
   hosts: all
   tasks:
@@ -35,16 +34,15 @@
     - name: run the backend-service menifest file
       shell: kubectl apply -f backend-service.yaml
     
-    - name: get URL of Node.js service
-      shell: minikube service node-js-service --url
-      register: node_js_service_url
+    - name: get Node.js service port
+      shell: kubectl get service node-js-service -o jsonpath='{.spec.ports[0].nodePort}'
+      register: node_js_service_port
       
     - name: Output Node.js service URL
-      shell: echo "{{ node_js_service_url.stdout }}"
-
+      set_fact:
+        node_js_service_url: "http://{{ ansible_host }}:{{ node_js_service_port.stdout }}"
+      
     - name: run the client menifest file
       shell: kubectl apply -f client-deployment.yaml
       environment:
-        REACT_APP_BASE_URL: "{{ node_js_service_url.stdout }}"
-      
-    
+        REACT_APP_BASE_URL: "{{ node_js_service_url }}"
