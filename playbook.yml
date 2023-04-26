@@ -25,23 +25,26 @@
     - name: pull docker server image
       shell: docker pull eovnstd/ipl_server
 
-    - name: pull docker client image
-      shell: docker pull eovnstd/ipl_client
-
     - name: run the server manifest file
       shell: kubectl apply -f server-deployment.yaml
 
     - name: run the backend service manifest file
       shell: kubectl apply -f backend-service.yaml
-    
-    - name: get URL of backend service
-      shell: minikube service backend-service --url
-      register: backend_service_url
-      
+          
+    - name: pull docker client image
+      shell: docker pull eovnstd/ipl_client
+
+    - name: get URL of node js (server) service
+      shell: minikube service node-js-service --url
+      register: node-js-service
+
     - name: Output backend service URL
-      shell: echo "{{ backend_service_url.stdout }}"
+      shell: echo "{{ node-js-service.stdout }}"
+    
+    -name: random echoing
+      shell: echo "random things"
 
     - name: run the client manifest file
       shell: kubectl apply -f client-deployment.yaml
-      environment:
-        REACT_APP_BASE_URL: "{{ backend_service_url.stdout }}"
+      # environment:
+      #   REACT_APP_BASE_URL: "{{ backend_service_url.stdout }}"
