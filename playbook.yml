@@ -13,6 +13,11 @@
         src: ./server-deployment.yml
         dest: ./
 
+    - name: copy backend service file from folder to remote host
+      copy:
+        src: ./backend-service.yaml
+        dest: ./
+
     - name: copy client deployment file from folder to remote host
       copy:
         src: ./client-deployment.yml
