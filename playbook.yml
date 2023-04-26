@@ -35,7 +35,13 @@
     - name: run the backend-service menifest file
       shell: kubectl apply -f backend-service.yaml
     
+    - name: get URL of Node.js service
+      shell: minikube service node-js-service --url
+      register: node_js_service_url
+    
     - name: run the client menifest file
       shell: kubectl apply -f client-deployment.yml
+      environment:
+        REACT_APP_BASE_URL: "{{ node_js_service_url.stdout }}"
       
     

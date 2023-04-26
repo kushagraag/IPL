@@ -19,9 +19,10 @@ spec:
         - containerPort: 3000
         env:
         - name: REACT_APP_BASE_URL
-          value: http://node-js-service:5000
+          value: ""
         # - name: BACKEND_URL
         #   value: "http://server-deployment:5000"
+        args: ["sh", "-c", "echo REACT_APP_BASE_URL=http://$(kubectl get service node-js-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}'):5000 > .env && npm start"]
 
 ---
 apiVersion: v1
