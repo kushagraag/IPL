@@ -38,7 +38,10 @@
     - name: get URL of Node.js service
       shell: minikube service node-js-service --url
       register: node_js_service_url
-    
+      
+    - name: Output Node.js service URL
+      shell: echo "{{ node_js_service_url.stdout }}"
+
     - name: run the client menifest file
       shell: kubectl apply -f client-deployment.yaml
       environment:
