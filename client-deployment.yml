@@ -18,10 +18,10 @@ spec:
         ports:
         - containerPort: 3000
         env:
-        - name: BACKEND_URL
-          value: "http://server-deployment:5000"
         - name: REACT_APP_BASE_URL
           value: http://node-js-service:5000
+        # - name: BACKEND_URL
+        #   value: "http://server-deployment:5000"
 
 ---
 apiVersion: v1
