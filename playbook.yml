@@ -45,6 +45,4 @@
       shell: echo "random things"
 
     - name: run the client manifest file
-      shell: kubectl apply -f client-deployment.yaml
-      # environment:
-      #   REACT_APP_BASE_URL: "{{ backend_service_url.stdout }}"
+      shell: kubectl apply -f ./client-deployment.yaml
