@@ -27,6 +27,9 @@
     - name: run the server menifest file
       shell: kubectl apply -f server-deployment.yml
 
+    - name: run the backend-service menifest file
+      shell: kubectl apply -f backend-service.yml
+    
     - name: run the client menifest file
       shell: kubectl apply -f client-deployment.yml
       
