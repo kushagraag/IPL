@@ -28,21 +28,20 @@
     - name: pull docker client image
       shell: docker pull eovnstd/ipl_client
 
-    - name: run the server menifest file
+    - name: run the server manifest file
       shell: kubectl apply -f server-deployment.yaml
 
-    - name: run the backend-service menifest file
+    - name: run the backend service manifest file
       shell: kubectl apply -f backend-service.yaml
     
-    - name: get Node.js service port
-      shell: kubectl get service node-js-service -o jsonpath='{.spec.ports[0].nodePort}'
-      register: node_js_service_port
+    - name: get URL of backend service
+      shell: minikube service backend-service --url
+      register: backend_service_url
       
-    - name: Output Node.js service URL
-      set_fact:
-        node_js_service_url: "http://{{ ansible_host }}:{{ node_js_service_port.stdout }}"
-      
-    - name: run the client menifest file
+    - name: Output backend service URL
+      shell: echo "{{ backend_service_url.stdout }}"
+
+    - name: run the client manifest file
       shell: kubectl apply -f client-deployment.yaml
       environment:
-        REACT_APP_BASE_URL: "{{ node_js_service_url }}"
+        REACT_APP_BASE_URL: "{{ backend_service_url.stdout }}"
