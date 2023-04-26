@@ -20,7 +20,7 @@ function PointsTable() {
 
   }
   useEffect(()=>{
-    fetchTeams("http://localhost:5000/pointstable")
+    fetchTeams(`${process.env.REACT_APP_BASE_URL}/pointstable`)
   },[])
   
     return (
