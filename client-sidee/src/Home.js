@@ -17,7 +17,7 @@ function Home() {
     >
       <div className="container grid">
         <div className="section-hero-data">
-          <h1 className="hero-heading">Welcome to IPL 2023</h1>
+          <h1 className="hero-heading">Welcome to IPL</h1>
           <p className="hero-para">
             Here you can see some of the best IPL memories.
           </p>
