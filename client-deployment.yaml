@@ -20,8 +20,9 @@ spec:
         env:
         - name: REACT_APP_BASE_URL
           value: ""
-          args: ["sh", "-c", "echo REACT_APP_BASE_URL=http://$(kubectl get service backend-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}'):5000 > .env && npm start"]
-
+        - name: BACKEND_URL
+          value: "http://server-deployment:5000"
+        command: ["sh", "-c", "echo REACT_APP_BASE_URL=http://$(kubectl get service node-js-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}'):5000 > .env && npm start"]
 ---
 apiVersion: v1
 kind: Service
