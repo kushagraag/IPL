@@ -10,19 +10,9 @@
         name: docker
         state: started
 
-    - name: copy server deployment file from folder to remote host
+    - name: copy server-client deployment file from folder to remote host
       copy:
-        src: ./server-deployment.yaml
-        dest: ./
-
-    # - name: copy backend service file from folder to remote host
-    #   copy:
-    #     src: ./backend-service.yaml
-    #     dest: ./
-
-    - name: copy client deployment file from folder to remote host
-      copy:
-        src: ./client-deployment.yaml
+        src: ./server-client-deployment.yaml
         dest: ./
         
     - name: pull docker server image
@@ -32,11 +22,7 @@
       shell: docker pull eovnstd/ipl_client
 
     - name: run the server manifest file
-      shell: kubectl apply -f server-deployment.yaml
-
-
-    - name: run the client manifest file
-      shell: kubectl apply -f ./client-deployment.yaml
+      shell: kubectl apply -f server-client-deployment.yaml
     
     - name: copt port forward file
       copy:
