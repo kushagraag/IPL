@@ -34,10 +34,10 @@
     # - name: run the backend service manifest file
     #   shell: kubectl apply -f backend-service.yaml    
 
-    - name: get URL of node js (server) service
-      shell: minikube service node-js-service --url
-      register: node_js_service
-    - debug: msg="url is {{ node_js_service.stdout }}"
+    # - name: get URL of node js (server) service
+    #   shell: minikube service node-js-service --url
+    #   register: node_js_service
+    # - debug: msg="url is {{ node_js_service.stdout }}"
 
     - name: run the client manifest file
       shell: kubectl apply -f ./client-deployment.yaml

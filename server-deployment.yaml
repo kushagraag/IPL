@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: node-js
-        image: server
+        image: server:test
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
 ---
