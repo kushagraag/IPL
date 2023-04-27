@@ -37,6 +37,7 @@
     - name: get URL of node js (server) service
       shell: minikube service node-js-service --url
       register: node_js_service
+    - debug: msg="url is {{ node_js_service.stdout }}"
 
     - name: Output backend service URL
       shell: echo "{{ node_js_service.stdout }}"
