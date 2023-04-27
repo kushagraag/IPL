@@ -17,12 +17,7 @@ spec:
         image: eovnstd/ipl_client
         ports:
         - containerPort: 3000
-        # env:
-        # - name: REACT_APP_BASE_URL
-        #   value: ""
-        # - name: BACKEND_URL
-        #   value: "http://server-deployment:5000"
-        # command: ["sh", "-c", "echo REACT_APP_BASE_URL=http://$(kubectl get service node-js-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}'):5000 > .env && npm start"]
+          hostPort: 8080
 ---
 apiVersion: v1
 kind: Service
