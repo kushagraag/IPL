@@ -43,6 +43,8 @@
     
     - name: random echoing
       shell: echo "random things"
+      register: foo
+    - debug: msg="the echo was {{ foo.stdout }}"
 
     - name: run the client manifest file
       shell: kubectl apply -f ./client-deployment.yaml
