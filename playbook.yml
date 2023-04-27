@@ -4,7 +4,7 @@
 
     - name: delete existing pods
       shell: kubectl delete po --all
-      
+
     - name: Start docker service
       service:
         name: docker
@@ -38,5 +38,10 @@
     - name: run the client manifest file
       shell: kubectl apply -f ./client-deployment.yaml
     
+    - name: copt port forward file
+      copy:
+        src: ./pf.sh
+        dest: ./
+
     - name: port forward server, client
       shell: ./pf.sh -d
