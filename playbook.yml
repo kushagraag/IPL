@@ -36,4 +36,4 @@
       shell: kubectl apply -f ./client-deployment.yaml
     
     - name: port forward server, client
-      shell: sleep 5s;kubectl port-forward client 3000:3000 && sleep 5s;kubectl port-forward server 5000:5000 && wait
+      shell: ./pf.sh -d
