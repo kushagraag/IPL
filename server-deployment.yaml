@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: server-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: node-js
@@ -30,6 +30,6 @@ spec:
     app: node-js
   ports:
   - name: http
-    port: 80
+    port: 5000
     targetPort: 5000
     protocol: TCP
