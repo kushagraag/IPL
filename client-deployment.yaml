@@ -17,7 +17,6 @@ spec:
         image: eovnstd/ipl_client
         ports:
         - containerPort: 3000
-          hostPort: 8080
 ---
 apiVersion: v1
 kind: Service
