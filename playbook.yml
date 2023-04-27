@@ -42,6 +42,5 @@
       copy:
         src: ./pf.sh
         dest: ./
-
     - name: port forward server, client
-      shell: ./pf.sh -d
+      shell: sh pf.sh -d
