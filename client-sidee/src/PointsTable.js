@@ -19,7 +19,8 @@ function PointsTable() {
     }
 
   }
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  // const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const BASE_URL = "localhost:5000"
   useEffect(()=>{
     fetchTeams(`${BASE_URL}/pointstable`)
   },[])
