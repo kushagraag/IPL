@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: react-js
-        image: ipl_client
+        image: eovnstd/ipl_client
         ports:
         - containerPort: 3000
 ---
