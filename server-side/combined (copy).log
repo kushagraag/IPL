@@ -1,0 +1,22 @@
+{"endpoint":"/pointstable","level":"info","message":"API request successful for /pointstable","service":"pointstable"}
+{"endpoint":"/pointstable","level":"info","message":"API request successful for /pointstable","service":"pointstable"}
+{"endpoint":"/livescore","level":"info","message":"API request successful for /livescore","service":"livescore"}
+{"endpoint":"/livescore","level":"info","message":"API request successful for /livescore","service":"livescore"}
+{"endpoint":"/livescore","level":"info","message":"API request successful for /livescore","service":"livescore"}
+{"endpoint":"/livescore","level":"info","message":"API request successful for /livescore","service":"livescore"}
+{"endpoint":"/livescore","level":"info","message":"API request successful for /livescore","service":"livescore"}
+{"endpoint":"/livescore","level":"info","message":"API request successful for /livescore","service":"livescore"}
+{"endpoint":"/livescore","level":"info","message":"API request successful for /livescore","service":"pointstable"}
+{"endpoint":"/pointstable","level":"info","message":"API request successful for /pointstable","service":"pointstable"}
+{"endpoint":"/schedule","level":"info","message":"API request successful for /schedule","service":"schedule"}
+{"endpoint":"/stats","error":{"code":"ENOTFOUND","config":{"adapter":["xhr","http"],"env":{"Blob":null},"headers":{"Accept":"application/json, text/plain, */*","Accept-Encoding":"gzip, compress, deflate, br","User-Agent":"axios/1.3.6"},"maxBodyLength":-1,"maxContentLength":-1,"method":"get","timeout":0,"transformRequest":[null],"transformResponse":[null],"transitional":{"clarifyTimeoutError":false,"forcedJSONParsing":true,"silentJSONParsing":true},"url":"https://stats.espncricinfo.comundefined","xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN"},"message":"getaddrinfo ENOTFOUND stats.espncricinfo.comundefined","name":"Error","stack":"Error: getaddrinfo ENOTFOUND stats.espncricinfo.comundefined\n    at Function.AxiosError.from (/home/kushagra-home/Documents/IPL Final/IPL_kushagra/IPL/server-side/node_modules/axios/dist/node/axios.cjs:829:14)\n    at RedirectableRequest.handleRequestError (/home/kushagra-home/Documents/IPL Final/IPL_kushagra/IPL/server-side/node_modules/axios/dist/node/axios.cjs:2975:25)\n    at RedirectableRequest.emit (node:events:513:28)\n    at ClientRequest.eventHandlers.<computed> (/home/kushagra-home/Documents/IPL Final/IPL_kushagra/IPL/server-side/node_modules/follow-redirects/index.js:14:24)\n    at ClientRequest.emit (node:events:513:28)\n    at TLSSocket.socketErrorListener (node:_http_client:494:9)\n    at TLSSocket.emit (node:events:513:28)\n    at emitErrorNT (node:internal/streams/destroy:157:8)\n    at emitErrorCloseNT (node:internal/streams/destroy:122:3)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)","status":null},"level":"error","message":"API request failed for /stats","service":"mostfifty"}
+{"endpoint":"/stats/highestscore","level":"info","message":"API request successful for /stats/highestscore","service":"mostwicket"}
+{"endpoint":"/stats/highestsr","level":"info","message":"API request successful for /stats/highestsr","service":"bestbowling"}
+{"endpoint":"/stats/mostrun","level":"info","message":"API request successful for /stats/mostrun","service":"bestbowlingavg"}
+{"endpoint":"/stats/highestavg","level":"info","message":"API request successful for /stats/highestavg","service":"bestbowlingeconomy"}
+{"endpoint":"/stats/mostfifty","level":"info","message":"API request successful for /stats/mostfifty","service":"bestbowlingsr"}
+{"endpoint":"/stats/mostwicket","level":"info","message":"API request successful for /stats/mostwicket","service":"bestbowlingsr"}
+{"endpoint":"/stats/bestbowlingeconomy","level":"info","message":"API request successful for /stats/bestbowlingeconomy","service":"bestbowlingsr"}
+{"endpoint":"/stats/bestbowling","level":"info","message":"API request successful for /stats/bestbowling","service":"bestbowlingsr"}
+{"endpoint":"/stats/bestbowlingavg","level":"info","message":"API request successful for /stats/bestbowlingavg","service":"bestbowlingsr"}
+{"endpoint":"/stats/bestbowlingsr","level":"info","message":"API request successful for /stats/bestbowlingsr","service":"bestbowlingsr"}

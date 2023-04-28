@@ -22,203 +22,172 @@ const cors = require("cors");
 
 const dbConfig = require("./config/dbConfig");
 
-const logger = require('./logger')
+const { logger, setEndpointAsService } = require('./logger')
 
 app.use(cors({origin:"http://localhost:3000" , }))
 
-app.get("/pointstable", async(req, res) => {
+app.get("/pointstable", setEndpointAsService, async(req, res) => {
   try {
     const data = await point();
     res.send(data);
-    const endpoint = 'pointstable';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
-    console.log(`API request successful for ${endpoint}`); // add a console.log statement to debug
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
   } catch (error) {
-    const endpoint = 'pointstable';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/schedule", async (req, res) => {
+app.get("/schedule", setEndpointAsService, async (req, res) => {
   try {
     const data = await schedule();
-    const endpoint = 'schedule';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'schedule';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/livescore", async (req, res) => {
+app.get("/livescore", setEndpointAsService, async (req, res) => {
   try {
     const data = await livescore();
-    const endpoint = 'livescore';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'livescore';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats", async (req, res) => {
+app.get("/stats", setEndpointAsService, async (req, res) => {
   try {
     const data = await stats();
-    const endpoint = 'stats';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'stats';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats/mostrun", async(req,res)=>{
+app.get("/stats/mostrun", setEndpointAsService, async(req,res)=>{
   try {
     const data = await mostrun("https://stats.espncricinfo.com/ci/engine/records/batting/most_runs_career.html?id=15129;type=tournament");
-    const endpoint = 'stats/mostrun';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'stats/mostrun';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats/highestscore", async(req,res)=>{
+app.get("/stats/highestscore", setEndpointAsService, async(req,res)=>{
   try {
     const data = await highestScore("https://stats.espncricinfo.com/ci/engine/records/batting/most_runs_innings.html?id=15129;type=tournament");
-    const endpoint = 'stats/highestscore';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'stats/highestscore';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats/highestavg", async (req, res) => {
+app.get("/stats/highestavg", setEndpointAsService, async (req, res) => {
   try {
     const data = await highestAverage("https://stats.espncricinfo.com/ci/engine/records/batting/highest_career_batting_average.html?id=15129;type=tournament");
-    const endpoint = 'stats/highestavg';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'stats/highestavg';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error);
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats/highestsr", async (req, res) => {
+app.get("/stats/highestsr", setEndpointAsService, async (req, res) => {
   try {
     const data = await highestStrikeRate("https://stats.espncricinfo.com/ci/engine/records/batting/highest_career_strike_rate.html?id=15129;type=tournament");
-    const endpoint = 'stats/highestsr';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'stats/highestsr';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error);
+        console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats/mostfifty", async (req, res) => {
+app.get("/stats/mostfifty", setEndpointAsService, async (req, res) => {
   try {
     const data = await mostFifty("https://stats.espncricinfo.com/ci/engine/records/batting/most_fifties_career.html?id=15129;type=tournament");
-    const endpoint = 'stats/mostfifty';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'mostfifty';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats/mostwicket", async (req, res) => {
+app.get("/stats/mostwicket", setEndpointAsService, async (req, res) => {
   try {
     const data = await highestMostWicket("https://stats.espncricinfo.com/ci/engine/records/bowling/most_wickets_career.html?id=15129;type=tournament");
-    const endpoint = 'stats/mostwicket';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'mostwicket';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats/bestbowling", async (req, res) => {
+app.get("/stats/bestbowling", setEndpointAsService, async (req, res) => {
   try {
     const data = await highestBestBowling("https://stats.espncricinfo.com/ci/engine/records/bowling/best_figures_innings.html?id=15129;type=tournament");
-    const endpoint = 'stats/bestbowling';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'bestbowling';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats/bestbowlingavg", async (req, res) => {
+app.get("/stats/bestbowlingavg", setEndpointAsService, async (req, res) => {
   try {
     const data = await bestBowlingAvg("https://stats.espncricinfo.com/ci/engine/records/bowling/best_career_bowling_average.html?id=15129;type=tournament");
-    const endpoint = 'stats/bestbowlingavg';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'bestbowlingavg';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats/bestbowlingeconomy", async (req, res) => {
+app.get("/stats/bestbowlingeconomy", setEndpointAsService, async (req, res) => {
   try {
     const data = await bestEconomyRate("https://stats.espncricinfo.com/ci/engine/records/bowling/best_career_economy_rate.html?id=15129;type=tournament");
-    const endpoint = 'stats/bestbowlingeconomy';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'bestbowlingeconomy';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
 
-app.get("/stats/bestbowlingsr", async (req, res) => {
+app.get("/stats/bestbowlingsr", setEndpointAsService, async (req, res) => {
   try {
     const data = await bestBowlingSr("https://stats.espncricinfo.com/ci/engine/records/bowling/best_career_strike_rate.html?id=15129;type=tournament");
-    const endpoint = 'stats/bestbowlingsr';
-    logger.info(`API request successful for ${endpoint}`, { endpoint });
+    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
     res.send(data);
   } catch (error) {
-    const endpoint = 'bestbowlingsr';
-    logger.error(`API request failed for ${endpoint}`, { endpoint, error });
-    console.log(`API request failed for ${endpoint}`, error); // add a console.log statement to debug
+    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
+    console.log(`API request failed for ${req.url}`, error);
     res.status(500).send({ error: 'Internal server error' });
   }
 });
