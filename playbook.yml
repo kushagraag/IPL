@@ -9,7 +9,7 @@
       service:
         name: docker
         state: started
-        
+
     - name: copy server-client deployment file from folder to remote host
       copy:
         src: ./server-client-deployment.yaml
@@ -24,10 +24,10 @@
     - name: run the server manifest file
       shell: kubectl apply -f server-client-deployment.yaml
     
-    - name: copy port forward file
-      copy:
-        src: ./pf.sh
-        dest: ./
-    - name: port forward server, client
-      shell: sh pf.sh -d
+    # - name: copy port forward file
+    #   copy:
+    #     src: ./pf.sh
+    #     dest: ./
+    # - name: port forward server, client
+    #   shell: sh pf.sh -d
 
