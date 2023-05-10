@@ -9,21 +9,11 @@
       service:
         name: docker
         state: started
-
-    - name: copy docker compose file
-      copy: 
-        src: ./docker-compose.yml
-        dest: ./
-
+        
     - name: copy server-client deployment file from folder to remote host
       copy:
         src: ./server-client-deployment.yaml
         dest: ./
-    
-    
-    - name: run Docker Compose file
-      docker_compose:
-        project_src: ./docker-compose.yml
 
     - name: pull docker server image
       shell: docker pull eovnstd/ipl_server
