@@ -9,26 +9,23 @@ const bestBowlingSr = async (url) => {
 const handleBestBowlingSr = (html) => {
   var arr = [];
   const $ = cheerio.load(html);
-  const table = $(".engineTable");
+  const table = $(".ds-w-full.ds-table.ds-table-xs.ds-table-auto.ds-w-full.ds-overflow-scroll.ds-scrollbar-hide");
   const body = $(table[0]).find("tbody");
   const trArr = $(body).find("tr");
-  for (let i = 0; i < 10; i = i + 2) {
-    const allCol = $(trArr[i]).find(".data2 td");
-    var team = $(trArr[i + 1])
-      .find(".note td")
-      .text();
+  for (let i = 0; i < 5; i++) {
+    const allCol = $(trArr[i]).find("td");
 
     var playerName = $(allCol[0]).text();
     var matches = $(allCol[1]).text();
-    var wicket = $(allCol[5]).text();
-    var sr = $(allCol[9]).text();
+    var wicket = $(allCol[6]).text();
+    var sr = $(allCol[11]).text();
 
     var obj = {
       playerName,
       matches,
       wicket,
       sr,
-      team,
+      
     };
     arr.push(obj);
     
