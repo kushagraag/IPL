@@ -20,13 +20,17 @@
 
     - name: pull docker client image
       shell: docker pull eovnstd/ipl_client
+    
+    - name: run docker compose for logs
+      shell: docker compose up -d
 
     - name: run the server manifest file
       shell: kubectl apply -f server-client-deployment.yaml
     
-    - name: copt port forward file
+    - name: copy port forward file
       copy:
         src: ./pf.sh
         dest: ./
     - name: port forward server, client
       shell: sh pf.sh -d
+
