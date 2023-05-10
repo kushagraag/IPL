@@ -20,9 +20,9 @@
 
     - name: pull docker client image
       shell: docker pull eovnstd/ipl_client
-    
-    - name: run docker compose for logs
-      shell: docker compose up -d
+    - name: run Docker Compose file
+      docker_compose:
+        project_src: docker-compose.yml
 
     - name: run the server manifest file
       shell: kubectl apply -f server-client-deployment.yaml
