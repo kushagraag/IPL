@@ -14,15 +14,21 @@
       copy:
         src: ./server-client-deployment.yaml
         dest: ./
-        
+    
+    - name: copy docker compose file
+      copy: 
+        src: ./docker-compose.yml
+        dest: ./
+    
+    - name: run Docker Compose file
+      docker_compose:
+        project_src: docker-compose.yml
+
     - name: pull docker server image
       shell: docker pull eovnstd/ipl_server
 
     - name: pull docker client image
       shell: docker pull eovnstd/ipl_client
-    - name: run Docker Compose file
-      docker_compose:
-        project_src: docker-compose.yml
 
     - name: run the server manifest file
       shell: kubectl apply -f server-client-deployment.yaml
