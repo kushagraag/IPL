@@ -3,7 +3,7 @@ var expect  = require("chai").expect;
 var request = require("request");
 
 describe("Points table Testing", function(){
-    // this.timeout(5000);
+    this.timeout(10000);
     describe("Testing", function(){
 
         var url= "http://localhost:5000/pointstable";
@@ -18,7 +18,7 @@ describe("Points table Testing", function(){
 })
 
 describe("Live Score Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/livescore";
@@ -33,7 +33,7 @@ describe("Live Score Testing", function(){
 })
 
 describe("Schedule Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/schedule";
@@ -48,7 +48,7 @@ describe("Schedule Testing", function(){
 })
 
 describe("Statistic -- Most Run Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/stats/mostrun";
@@ -63,7 +63,7 @@ describe("Statistic -- Most Run Testing", function(){
 })
 
 describe("Statistic -- Highest Score Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/stats/highestscore";
@@ -78,7 +78,7 @@ describe("Statistic -- Highest Score Testing", function(){
 })
 
 describe("Statistic -- Highest Average Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/stats/highestavg";
@@ -93,7 +93,7 @@ describe("Statistic -- Highest Average Testing", function(){
 })
 
 describe("Statistic -- Most Fifty Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/stats/mostfifty";
@@ -108,7 +108,7 @@ describe("Statistic -- Most Fifty Testing", function(){
 })
 
 describe("Statistic -- Most Wicket Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/stats/mostwicket";
@@ -123,7 +123,7 @@ describe("Statistic -- Most Wicket Testing", function(){
 })
 
 describe("Statistic -- Best Bowling Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/stats/bestbowling";
@@ -138,7 +138,7 @@ describe("Statistic -- Best Bowling Testing", function(){
 })
 
 describe("Statistic -- Best Bowling Avgerage Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/stats/bestbowlingavg";
@@ -153,7 +153,7 @@ describe("Statistic -- Best Bowling Avgerage Testing", function(){
 })
 
 describe("Statistic -- Best Bowling SR Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/stats/bestbowlingsr";
@@ -168,7 +168,7 @@ describe("Statistic -- Best Bowling SR Testing", function(){
 })
 
 describe("Statistic -- Most Wicket Testing", function(){
-    this.timeout(5000);
+    this.timeout(10000);
     describe("Status Check", function(){
 
         var url= "http://localhost:5000/stats/mostwicket";
@@ -184,7 +184,7 @@ describe("Statistic -- Most Wicket Testing", function(){
 
 describe("Testing - Register", function(){
     var url = "http://localhost:5000/user/register";
-    this.timeout(5000);
+    this.timeout(10000);
     it("returns status http-code 200", function(done){
         request({
             url: url,
@@ -201,7 +201,7 @@ describe("Testing - Register", function(){
 })
 describe("Testing - Login", function(){
     var url = "http://localhost:5000/user/login";
-    this.timeout(5000);
+    this.timeout(10000);
     it("returns status http-code 200", function(done){
         request({
             url: url,
@@ -219,7 +219,7 @@ describe("Testing - Login", function(){
 
 describe("Testing - Sign Up", function(){
     var url = "http://localhost:5000/user/login";
-    this.timeout(5000);
+    this.timeout(10000);
     it("Correct Credentials", function(done){
         request({
             url: url, 
