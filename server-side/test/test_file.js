@@ -3,7 +3,7 @@ var expect  = require("chai").expect;
 var request = require("request");
 
 describe("Points table Testing", function(){
-    this.timeout(5000);
+    // this.timeout(5000);
     describe("Testing", function(){
 
         var url= "http://localhost:5000/pointstable";
