@@ -1,60 +1,69 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
+const Nav = styled.nav`
+  background-color: ${({ theme }) => theme.color.bg};
+`;
+
+const MenuItem = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const NavbarList = styled.ul`
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+`;
+
+const NavbarLink = styled(NavLink)`
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  margin: 0 5px;
+  border-bottom: 2px solid transparent;
+  font-size: 22px; /* Adjust the font size as needed */
+
+  &:hover {
+    border-bottom: 2px solid #333;
+  }
+
+  &.active {
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+  }
+`;
+
+
 function Navbar() {
   return (
     <Nav>
-      <div className="menuItem">
-        <ul className="navbar-list">
+      <MenuItem>
+        <NavbarList>
           <li>
-            <NavLink className="navbar-link" to="/">Home</NavLink>
+            <NavbarLink exact to="/">Home</NavbarLink>
           </li>
           <li>
-            <NavLink className="navbar-link" to="/livescore">LiveScore</NavLink>
+            <NavbarLink to="/livescore">LiveScore</NavbarLink>
           </li>
           <li>
-            <NavLink className="navbar-link" to="/pointstable">points table</NavLink>
-          </li>
-
-          <li>
-            <NavLink className="navbar-link" to="/schedule">schedule</NavLink>
+            <NavbarLink to="/pointstable">Points Table</NavbarLink>
           </li>
           <li>
-            <NavLink className="navbar-link" to="/statistic">statistic</NavLink>
+            <NavbarLink to="/schedule">Schedule</NavbarLink>
           </li>
           <li>
-            <NavLink className="navbar-link" to="/login">login</NavLink>
+            <NavbarLink to="/statistic">Statistic</NavbarLink>
           </li>
-        </ul>
-      </div>
+          <li>
+            <NavbarLink to="/login">Login</NavbarLink>
+          </li>
+        </NavbarList>
+      </MenuItem>
     </Nav>
   );
 }
-
-const Nav = styled.nav`
-.navbar-list {
-  display: flex;
-  gap: 4.8rem;
-  li {
-    margin-top: 40px;
-    list-style: none;
-    .navbar-link {
-      &:link,
-      &:visited {
-        display: inline-block;
-        text-decoration: none;
-        font-size: 1.8rem;
-        text-transform: uppercase;
-        color: ${({ theme }) => theme.color.black};
-        transition: color 0.3s linear;
-      }
-      &:hover,
-      &:active {
-        color: ${({ theme }) => theme.color.helper};
-      }
-    }
-  }
-}
-`
 
 export default Navbar;

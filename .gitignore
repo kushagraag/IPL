@@ -2,4 +2,4 @@ kubeall.sh
 dltkube.sh
 pf.sh
 *.old
-noPushNoUse
+docker-compose.yml

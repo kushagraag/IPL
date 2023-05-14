@@ -178,12 +178,8 @@ function Statistic() {
       {/* {
       loading === "true" ? <MostRuns data={data.mostruns}/> : <h1>hello</h1>} */}
       {/* <MostRuns data={stats.mostruns}/> */}
-      <div style={{backgroundColor:'#F8F9FA',  marginTop:'-2%'}}>
+      <div style={{backgroundColor:'#F8F9FA',  marginTop:'-1%'}}>
         <div className="container" style={{backgroundColor:'', width:'50%', borderRadius:''}}>
-        {/* {
-            stat &&  <MostRuns item={stat.mostruns} />
-            
-          } */}
           <MostRuns item={mostruns} />
           <HighestScores stats={highestScore} />
           <HighestAverages stats={highestAverage} />

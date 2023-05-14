@@ -1,10 +1,42 @@
 import React from "react";
 import { Form,message } from "antd";
 import axios from "axios";
+import styled from "styled-components";
 import "../resources/global.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { HideLoading, ShowLoading } from "../redux/alertsSlice";
+
+
+const StyledLink = styled(Link)`
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: ${({ theme }) => theme.color.btn};
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: -4%;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.btn}; /* Set the same background color to turn off the hover effect */
+    color: white; /* Set the same text color to turn off the hover effect */
+  }
+`;
+
+const StyledButton = styled.button`
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: ${({ theme }) => theme.color.btn};
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  // cursor: pointer;
+
+`;
+
 function Login(){
   const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -42,10 +74,10 @@ function Login(){
           </Form.Item>
           
           <div className="d-flex justify-content-between align-items-center">
-            <Link to="/register">Click here to register</Link>
-            <button className="primary-btn" type="Submit">
-              Login
-            </button>
+          <StyledLink to="/register">Register</StyledLink>
+          <StyledButton type="submit" className="primary-btn">
+          Login
+          </StyledButton>
 
           </div>
         </Form>

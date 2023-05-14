@@ -21,6 +21,7 @@ import AdminMatches from "./pages/Admin/AdminMatches";
 import AdminUsers from "./pages/Admin/AdminUsers";
 import BookNow from "./pages/BookNow";
 import Bookings from "./pages/Bookings";
+import Profile from "./pages/Profile";
 function App() {
   const {loading} = useSelector(state => state.alerts);
   const theme = {
@@ -59,6 +60,7 @@ function App() {
             <Route path="/login" element={<PublicRoute><Login /></PublicRoute>}></Route>
             <Route path="/register" element={<PublicRoute><Register /></PublicRoute>}></Route>
             <Route path="/userhome" element={<ProtectedRoute><Userhome /></ProtectedRoute>}></Route>
+            <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}></Route>
             <Route path="/admin" element={<ProtectedRoute><AdminHome /></ProtectedRoute>}></Route>
             <Route path="/admin-matches" element={<ProtectedRoute><AdminMatches /></ProtectedRoute>}></Route>
             <Route path="/admin-users" element={<ProtectedRoute><AdminUsers /></ProtectedRoute>}></Route>
