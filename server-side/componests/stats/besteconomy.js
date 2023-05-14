@@ -9,14 +9,12 @@ const bestEconomyRate = async (url) => {
 const handleBestEconomyRate = (html) => {
   var arr = [];
   const $ = cheerio.load(html);
-  const table = $(".engineTable");
+  const table = $(".ds-w-full.ds-table.ds-table-xs.ds-table-auto.ds-w-full.ds-overflow-scroll.ds-scrollbar-hide");
   const body = $(table[0]).find("tbody");
   const trArr = $(body).find("tr");
-  for (let i = 0; i < 10; i = i + 2) {
-    const allCol = $(trArr[i]).find(".data2 td");
-    var team = $(trArr[i + 1])
-      .find(".note td")
-      .text();
+  for (let i = 0; i < 5; i++) {
+    const allCol = $(trArr[i]).find("td");
+    
 
     var playerName = $(allCol[0]).text();
     var matches = $(allCol[1]).text();
@@ -28,7 +26,7 @@ const handleBestEconomyRate = (html) => {
       matches,
       wicket,
       economy,
-      team,
+      
     };
     arr.push(obj);
     

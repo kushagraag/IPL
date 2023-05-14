@@ -80,18 +80,6 @@ function Statistic() {
       console.error(e);
     }
   }
-  const fetchHighestSR = async(url) => {
-    try{
-      const res = await fetch(url);
-      const data = await res.json();   
-    if (data.length > 0) {
-      setHighestSR(data);
-    }
-    }
-    catch(e){
-      console.error(e);
-    }
-  }
   const fetchMostFifty = async(url) => {
     try{
       const res = await fetch(url);
@@ -140,18 +128,7 @@ function Statistic() {
       console.error(e);
     }
   }
-  const fetchBestBowlingEconomy = async(url) => {
-    try{
-      const res = await fetch(url);
-      const data = await res.json();   
-    if (data.length > 0) {
-      setBestBowlingEconomy(data);
-    }
-    }
-    catch(e){
-      console.error(e);
-    }
-  }
+ 
   const fetchBestBowlingSr = async(url) => {
     try{
       const res = await fetch(url);
@@ -168,13 +145,12 @@ function Statistic() {
     fetchStat("http://localhost:5000/stats");
     fetchStats("http://localhost:5000/stats/mostrun");
     fetchHighestScore("http://localhost:5000/stats/highestscore");
-    fetchHighestAverage("http://localhost:5000/stats/highestavg")
-    fetchHighestSR("http://localhost:5000/stats/highestsr");
+    fetchHighestAverage("http://localhost:5000/stats/highestavg");
     fetchMostFifty("http://localhost:5000/stats/mostfifty");
     fetchMostWicket("http://localhost:5000/stats/mostwicket");
     fetchBestBowling("http://localhost:5000/stats/bestbowling");
-    fetchBestBowlingAvg("http://localhost:5000/stats/bestbowlingavg");
-    fetchBestBowlingEconomy("http://localhost:5000/stats/bestbowlingeconomy");
+    // fetchBestBowlingAvg("http://localhost:5000/stats/bestbowlingavg");
+    // fetchBestBowlingEconomy("http://localhost:5000/stats/bestbowlingeconomy");
     fetchBestBowlingSr("http://localhost:5000/stats/bestbowlingsr");
   }
   ,[])
@@ -211,17 +187,17 @@ function Statistic() {
           <MostRuns item={mostruns} />
           <HighestScores stats={highestScore} />
           <HighestAverages stats={highestAverage} />
-          <HighestStrikeRates stats={highestSR} />
+          {/* <HighestStrikeRates stats={highestSR} /> */}
           <MostFiftys stats={mostFifty} />
           <HighestMostWickets stats={mostWicket} />
           <HighestBestBowlings stats={bestBowling} />
-          <BestBowlingAvgs stats={bestBowlingAvg} />
-          <BestEconomyRates stats={bestBowlingEconomy} />
+          {/* <BestBowlingAvgs stats={bestBowlingAvg} /> */}
+          {/* <BestEconomyRates stats={bestBowlingEconomy} /> */}
           <BestBowlingSrs stats={bestBowlingSr} />
           
-          {
+          {/* {
             !stat && <h1>loading</h1>
-          }
+          } */}
 
         </div>
       </div>

@@ -307,7 +307,7 @@ function LiveScore() {
             }}>
             <div className="col-md-6 d-flex justify-content-center align-items-center" style={{ backgroundColor: '' }}>
               <div className="d-flex flex-column align-items-center">
-                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/317000/317003.png" alt={match.team1} style={{ width: '50%' }} />
+                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/313400/313423.logo.png" alt={match.team1} style={{ width: '50%' }} />
                 <p style={{ fontWeight: 'bold', fontSize: '22px' }}>{match.team1}</p>
               </div>
               <div className="row align-items-center ml-3">
@@ -318,7 +318,7 @@ function LiveScore() {
             </div>
             <div className="col-md-6 d-flex justify-content-center align-items-center" style={{ backgroundColor: '' }}>
               <div className="d-flex flex-column align-items-center">
-                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/334700/334707.png" alt={match.team2} style={{ width: '50%' }} />
+                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/313400/313418.logo.png" alt={match.team2} style={{ width: '50%' }} />
                 <p style={{ fontWeight: 'bold', fontSize: '22px' }}>{match.team2}</p>
               </div>
               <div className="row align-items-center ml-3">

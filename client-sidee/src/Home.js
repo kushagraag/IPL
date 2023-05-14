@@ -9,21 +9,28 @@ function Home() {
         backgroundImage: "url(./images/111111.png)",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        height: 1000,
-        width: 2000,
+        height: "100%",
+        width: "100%",
         backgroundColor: "rgba(0, 0, 0, .90)",
         backgroundColor: "transparent",
+        position: "fixed",
+        left: "0",
+        paddingTop: "60px"
+      
+        
       }}
     >
       <div className="container grid">
         <div className="section-hero-data">
-          <h1 className="hero-heading">Welcome to IPL</h1>
+          <h1 className="hero-heading">Welcome to IPL 2023</h1>
+          <div style={{display: "flex",justifyContent:"center",alignItems:"center",height:"100ev",textAlign:"center"}}>
           <p className="hero-para">
-            Here you can see some of the best IPL memories.
+            Book your ticket now.
           </p>
           <Button className="btn">
-            <NavLink to="/schedule">Click Here</NavLink>
+            <NavLink to="/login">Click Here</NavLink>
           </Button>
+          </div>
         </div>
       </div>
     </Wrapper>
@@ -46,10 +53,10 @@ padding: 9rem 0;
   .btn {
     max-width: 16rem;
     text-align:center;
-    margin-top: 15px;
+    margin-top: 35px;
     position: absolute;
     top: 50%;
-    left: 54%;
+    left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 
@@ -63,6 +70,7 @@ padding: 9rem 0;
   .hero-para {
     color: white;
     text-align:center;
+    font-size: 2rem;
   }
   `;
 

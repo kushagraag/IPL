@@ -22,178 +22,74 @@ const cors = require("cors");
 
 const dbConfig = require("./config/dbConfig");
 
-const { logger, setEndpointAsService } = require('./logger')
-
 app.use(cors({origin:"http://localhost:3000" , }))
 
-app.get("/pointstable", setEndpointAsService, async(req, res) => {
-  try {
-    const data = await point();
-    res.send(data);
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
+app.get("/pointstable", async(req, res) => {
+  const data = await point();
+  res.send(data);
 });
 
-app.get("/schedule", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await schedule();
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
+app.get("/schedule", async(req, res) => {
+  
+  var data1 = await schedule();
+  res.send(data1);
 });
 
-app.get("/livescore", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await livescore();
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
+app.get("/livescore", async(req,res)=>{
+  var data = await livescore();
+  res.send(data);
 });
 
-app.get("/stats", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await stats();
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
+// app.get("/stats", async(req,res)=>{
+//   var data = await stats();
+//   res.send(data);
+// });
+app.get("/stats/mostrun", async(req,res)=>{
+  // var data = await mostrun("https://stats.espncricinfo.com/ci/engine/records/batting/most_runs_career.html?id=15129;type=tournament");
+  var data = await mostrun("https://www.espncricinfo.com/records/tournament/batting-most-runs-career/indian-premier-league-2023-15129");
+  res.send(data);
 });
-
-app.get("/stats/mostrun", setEndpointAsService, async(req,res)=>{
-  try {
-    const data = await mostrun("https://stats.espncricinfo.com/ci/engine/records/batting/most_runs_career.html?id=15129;type=tournament");
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
+app.get("/stats/highestscore", async(req,res)=>{
+  var data = await highestScore("https://www.espncricinfo.com/records/tournament/batting-most-runs-innings/indian-premier-league-2023-15129");
+  res.send(data);
 });
-
-app.get("/stats/highestscore", setEndpointAsService, async(req,res)=>{
-  try {
-    const data = await highestScore("https://stats.espncricinfo.com/ci/engine/records/batting/most_runs_innings.html?id=15129;type=tournament");
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
+app.get("/stats/highestavg", async(req,res)=>{
+  var data = await highestAverage("https://www.espncricinfo.com/records/tournament/batting-highest-career-batting-average/indian-premier-league-2023-15129");
+  res.send(data);
 });
-
-app.get("/stats/highestavg", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await highestAverage("https://stats.espncricinfo.com/ci/engine/records/batting/highest_career_batting_average.html?id=15129;type=tournament");
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    res.status(500).send({ error: 'Internal server error' });
-  }
+// app.get("/stats/highestsr", async(req,res)=>{
+//   var data = await highestStrikeRate("https://stats.espncricinfo.com/ci/engine/records/batting/highest_career_strike_rate.html?id=15129;type=tournament");
+//   res.send(data);
+// });
+// https://stats.espncricinfo.com/ci/engine/records/batting/most_fifties_career.html?id=15129;type=tournament
+app.get("/stats/mostfifty", async(req,res)=>{
+  var data = await mostFifty("https://stats.espncricinfo.com/ci/engine/records/batting/most_fifties_career.html?id=15129;type=tournament");
+  res.send(data);
 });
-
-app.get("/stats/highestsr", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await highestStrikeRate("https://stats.espncricinfo.com/ci/engine/records/batting/highest_career_strike_rate.html?id=15129;type=tournament");
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-        console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
+app.get("/stats/mostwicket", async(req,res)=>{
+  var data = await highestMostWicket("https://stats.espncricinfo.com/ci/engine/records/bowling/most_wickets_career.html?id=15129;type=tournament");
+  res.send(data);
 });
-
-app.get("/stats/mostfifty", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await mostFifty("https://stats.espncricinfo.com/ci/engine/records/batting/most_fifties_career.html?id=15129;type=tournament");
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
+app.get("/stats/bestbowling", async(req,res)=>{
+  var data = await highestBestBowling("https://stats.espncricinfo.com/ci/engine/records/bowling/best_figures_innings.html?id=15129;type=tournament");
+  res.send(data);
 });
-
-app.get("/stats/mostwicket", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await highestMostWicket("https://stats.espncricinfo.com/ci/engine/records/bowling/most_wickets_career.html?id=15129;type=tournament");
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
+app.get("/stats/bestbowlingavg", async(req,res)=>{
+  var data = await bestBowlingAvg("https://stats.espncricinfo.com/ci/engine/records/bowling/best_career_bowling_average.html?id=15129;type=tournament");
+  res.send(data);
 });
-
-app.get("/stats/bestbowling", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await highestBestBowling("https://stats.espncricinfo.com/ci/engine/records/bowling/best_figures_innings.html?id=15129;type=tournament");
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
+// app.get("/stats/bestbowlingeconomy", async(req,res)=>{
+//   var data = await bestEconomyRate("https://stats.espncricinfo.com/ci/engine/records/bowling/best_career_economy_rate.html?id=15129;type=tournament");
+//   res.send(data);
+// });
+app.get("/stats/bestbowlingsr", async(req,res)=>{
+  
+  var data = await bestBowlingSr("https://stats.espncricinfo.com/ci/engine/records/bowling/best_career_strike_rate.html?id=15129;type=tournament");
+  res.send(data);
 });
-
-app.get("/stats/bestbowlingavg", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await bestBowlingAvg("https://stats.espncricinfo.com/ci/engine/records/bowling/best_career_bowling_average.html?id=15129;type=tournament");
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
-});
-
-app.get("/stats/bestbowlingeconomy", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await bestEconomyRate("https://stats.espncricinfo.com/ci/engine/records/bowling/best_career_economy_rate.html?id=15129;type=tournament");
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
-});
-
-app.get("/stats/bestbowlingsr", setEndpointAsService, async (req, res) => {
-  try {
-    const data = await bestBowlingSr("https://stats.espncricinfo.com/ci/engine/records/bowling/best_career_strike_rate.html?id=15129;type=tournament");
-    logger.info(`API request successful for ${req.url}`, { endpoint: req.url.slice(1) });
-    res.send(data);
-  } catch (error) {
-    logger.error(`API request failed for ${req.url}`, { endpoint: req.url.slice(1), error });
-    console.log(`API request failed for ${req.url}`, error);
-    res.status(500).send({ error: 'Internal server error' });
-  }
-});
-
 
 //-------------------------------------------------------------------------------------
+//----
 app.use(express.json());
 
 app.use("/user" , usersRoutes);
@@ -202,3 +98,5 @@ app.use("/bookings",bookingRoutes);
 app.listen(5000, () => {
   console.log("server started");
 });
+
+module.exports = app;
