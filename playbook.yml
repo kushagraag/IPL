@@ -26,6 +26,6 @@
       shell: docker pull eovnstd/ipl_client
 
     - name: run the server manifest file
-      shell: kubectl apply -f .
+      shell: kubectl apply -f ./
     
 
