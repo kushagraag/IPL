@@ -14,6 +14,10 @@
       copy:
         src: ./server-client-deployment.yaml
         dest: ./
+    - name: copy elk folder to run elk
+      copy:
+        src: ./elk/
+        dest: ./
 
     - name: pull docker server image
       shell: docker pull eovnstd/ipl_server
@@ -22,12 +26,6 @@
       shell: docker pull eovnstd/ipl_client
 
     - name: run the server manifest file
-      shell: kubectl apply -f server-client-deployment.yaml
+      shell: kubectl apply -f .
     
-    # - name: copy port forward file
-    #   copy:
-    #     src: ./pf.sh
-    #     dest: ./
-    # - name: port forward server, client
-    #   shell: sh pf.sh -d
 
