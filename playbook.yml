@@ -3,7 +3,7 @@
   tasks:
 
     - name: delete existing pods
-      shell: kubectl delete po --all
+      shell: kubectl delete all --all
 
     - name: Start docker service
       service:
