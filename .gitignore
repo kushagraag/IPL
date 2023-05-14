@@ -1,5 +1,5 @@
 kubeall.sh
 dltkube.sh
 pf.sh
-docker-compose.yml
 *.old
+noPushNoUse
