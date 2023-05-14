@@ -43,7 +43,7 @@ function Userhome() {
   return (
     <div>
       <div className="my-3 card-sm p-2">
-        <Row gutter={10}>
+        {/* <Row gutter={10}>
           <Col lg={6} sm={24}>
             <input
               type="text"
@@ -69,7 +69,7 @@ function Userhome() {
               Filter
             </button>
           </Col>
-        </Row>
+        </Row> */}
       </div>
       <div>
         {matches &&

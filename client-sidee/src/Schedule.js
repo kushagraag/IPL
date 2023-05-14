@@ -56,11 +56,11 @@ function Schedule() {
                                         <span>{time}</span>
                                     </div>
                                     <div style={{fontSize:20}} class="teams">
-                                        <div  style={{fontWeight: teamWin1? 600:''}} class="row">
+                                        <div   class="row">
                                             <span class="col-8">{team1} </span>
                                             <span class="col-4 score" style={{textAlign:'right'}}>{team1_score}</span>
                                         </div>
-                                        <div style={{fontWeight: teamWin2? 600: ''}}class="row">
+                                        <div class="row">
                                             <span class="col-8">{team2} </span>
                                             <span class="col-4 score" style={{textAlign:'right'}}>{team2_score}</span>
                                         </div>
@@ -76,7 +76,8 @@ function Schedule() {
                 );
             })
         } </>
+
     );
 }
-
+//style={{fontWeight: teamWin1? 600:''}}
 export default Schedule;
