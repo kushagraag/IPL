@@ -5,8 +5,6 @@ import Schedule from "./Schedule.js";
 import Statistic from "./Statistic.js";
 import LiveScore from "./LiveScore.js";
 
-
-
 describe("PointsTable", () => {
   it("renders the table headers", () => {
     render(<PointsTable />);
