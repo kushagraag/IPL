@@ -6,3 +6,7 @@
 {"endpoint":"schedule","level":"info","message":"API request successful for /schedule","service":"schedule"}
 {"endpoint":"pointstable","level":"info","message":"API request successful for /pointstable","service":"pointstable"}
 {"endpoint":"livescore","level":"info","message":"API request successful for /livescore","service":"pointstable"}
+{"endpoint":"pointstable","level":"info","message":"API request successful for /pointstable","service":"pointstable"}
+{"endpoint":"pointstable","level":"info","message":"API request successful for /pointstable","service":"pointstable"}
+{"endpoint":"schedule","level":"info","message":"API request successful for /schedule","service":"schedule"}
+{"endpoint":"schedule","level":"info","message":"API request successful for /schedule","service":"schedule"}
