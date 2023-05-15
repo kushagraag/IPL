@@ -7,7 +7,7 @@ import MostFiftysComponent from "./statistics/mostFiftys";
 import HighestMostWicketsComponent from "./statistics/highestMostWickets";
 import HighestBestBowlingsComponent from "./statistics/highestBestBowlings";
 import BestBowlingSrsComponent from "./statistics/bestBowlingSrs";
-import dhonigif from "./resources/team_images/dhoni.gif"
+// import dhonigif from "./resources/team_images/dhoni.gif"
 
 function Statistic() {
 
@@ -138,7 +138,7 @@ function Statistic() {
           <MostRunsComponent item={item} />
         ) : (
           // <h3>No Most Runs data available</h3>
-          <img src={dhonigif} width={'20%'}  ></img>
+          <h3>Loading stats</h3>
         )}
       </>
     );
@@ -149,7 +149,7 @@ function Statistic() {
         {item && item.length > 0 ? (
           <HighestScoresComponent stats={item} />
         ) : (
-          <img src={dhonigif} width={'20%'}  ></img>
+          <h3>Loading stats</h3>
           // <h3>No HighestScores data available</h3>
         )}
       </>
@@ -161,7 +161,7 @@ function Statistic() {
         {item && item.length > 0 ? (
           <HighestAveragesComponent stats={item} />
         ) : (
-          <img src={dhonigif} width={'20%'}  ></img>
+          <h3>Loading stats</h3>
           // <h3>No HighestAverages data available</h3>
         )}
       </>
@@ -173,7 +173,7 @@ function Statistic() {
         {item && item.length > 0 ? (
           <MostFiftysComponent stats={item} />
         ) : (
-          <img src={dhonigif} width={'20%'}  ></img>
+          <h3>Loading stats</h3>
           // <h3>No MostFiftys data available</h3>
         )}
       </>
@@ -185,7 +185,7 @@ function Statistic() {
         {item && item.length > 0 ? (
           <HighestMostWicketsComponent stats={item} />
         ) : (
-          <img src={dhonigif} width={'20%'}  ></img>
+          <h3>Loading stats</h3>
           // <h3>No HighestMostWickets data available</h3>
         )}
       </>
@@ -197,7 +197,7 @@ function Statistic() {
         {item && item.length > 0 ? (
           <HighestBestBowlingsComponent stats={item} />
         ) : (
-          <img src={dhonigif} width={'20%'}  ></img>
+          <h3>Loading stats</h3>
           // <h3>No HighestBestBowlings data available</h3>
         )}
       </>
@@ -209,7 +209,7 @@ function Statistic() {
         {item && item.length > 0 ? (
           <BestBowlingSrsComponent stats={item} />
         ) : (
-          <img src={dhonigif} width={'20%'}  ></img>
+          <h3>Loading stats</h3>
           // <h3>No BestBowlingSrs data available</h3>
         )}
       </>
