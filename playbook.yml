@@ -57,7 +57,9 @@
         src: ./elk/
         dest: ./
     
-    - name: run all kubectl files with kube.sh
+    - name: elevate permissions for kube.sh
+      shell: chmod 766 kube.sh
+    - name: run kube.sh
       shell: ./kube.sh
 
     # - name: run the server manifest file
