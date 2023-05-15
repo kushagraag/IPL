@@ -3,3 +3,4 @@ dltkube.sh
 pf.sh
 *.old
 docker-compose.yml
+logstash.conf

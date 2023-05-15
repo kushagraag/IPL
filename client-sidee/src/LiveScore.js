@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/LiveScore.css"
+
 function LiveScore() {
   const [match, setMatch] = useState({});
 
@@ -42,255 +43,57 @@ function LiveScore() {
     try {
       const res = await fetch(url);
       const data = await res.json();
-      console.log("data");
       setMatch(data);
-      // if(data.length > 0){
-      //   setTeams(data);
-      // }
-    //   const data = {
-    //     team1: "Punjab Kings",
-    //     img1 : "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/317000/317003.png",
-    //     score1: "197/4",
-    //     team2: "Rajasthan Royals",
-    //     img2 : "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/313400/313423.logo.png",
-    //     score2: "192/7",
-    //     crr: "",
-    //     status: "Punjab Kings won by 5 runs",
-    //     batting1: [
-    //         {
-    //             "playerName": "Prabhsimran Singh ",
-    //             "wicketTaker": "c Buttler b Holder",
-    //             "run": "60",
-    //             "ball": "34",
-    //             "fours": "7",
-    //             "sixs": "3",
-    //             "sr": "176.47"
-    //         },
-    //         {
-    //             "playerName": "Shikhar Dhawan (c)",
-    //             "wicketTaker": "not out ",
-    //             "run": "86",
-    //             "ball": "56",
-    //             "fours": "9",
-    //             "sixs": "3",
-    //             "sr": "153.57"
-    //         },
-    //         {
-    //             "playerName": "Jitesh Sharma †",
-    //             "wicketTaker": "c Parag b Chahal",
-    //             "run": "27",
-    //             "ball": "16",
-    //             "fours": "2",
-    //             "sixs": "1",
-    //             "sr": "168.75"
-    //         },
-    //         {
-    //             "playerName": "Sikandar Raza ",
-    //             "wicketTaker": " b Ashwin",
-    //             "run": "1",
-    //             "ball": "2",
-    //             "fours": "0",
-    //             "sixs": "0",
-    //             "sr": "50.00"
-    //         },
-    //         {
-    //             "playerName": "M Shahrukh Khan ",
-    //             "wicketTaker": "c Buttler b Holder",
-    //             "run": "11",
-    //             "ball": "10",
-    //             "fours": "1",
-    //             "sixs": "0",
-    //             "sr": "110.00"
-    //         },
-    //         {
-    //             "playerName": "Sam Curran ",
-    //             "wicketTaker": "not out ",
-    //             "run": "1",
-    //             "ball": "2",
-    //             "fours": "0",
-    //             "sixs": "0",
-    //             "sr": "50.00"
-    //         }
-    //     ],
-    //     "batting2": [
-    //         {
-    //             "playerName": "Yashasvi Jaiswal ",
-    //             "wicketTaker": "c sub (MW Short) b Arshdeep Singh",
-    //             "run": "11",
-    //             "ball": "8",
-    //             "fours": "1",
-    //             "sixs": "1",
-    //             "sr": "137.50"
-    //         },
-    //         {
-    //             "playerName": "Ravichandran Ashwin ",
-    //             "wicketTaker": "c S Dhawan b Arshdeep Singh",
-    //             "run": "0",
-    //             "ball": "4",
-    //             "fours": "0",
-    //             "sixs": "0",
-    //             "sr": "0.00"
-    //         },
-    //         {
-    //             "playerName": "Jos Buttler ",
-    //             "wicketTaker": "c & b Ellis",
-    //             "run": "19",
-    //             "ball": "11",
-    //             "fours": "1",
-    //             "sixs": "1",
-    //             "sr": "172.72"
-    //         },
-    //         {
-    //             "playerName": "Sanju Samson (c)†",
-    //             "wicketTaker": "c sub (MW Short) b Ellis",
-    //             "run": "42",
-    //             "ball": "25",
-    //             "fours": "5",
-    //             "sixs": "1",
-    //             "sr": "168.00"
-    //         },
-    //         {
-    //             "playerName": "Devdutt Padikkal ",
-    //             "wicketTaker": " b Ellis",
-    //             "run": "21",
-    //             "ball": "26",
-    //             "fours": "1",
-    //             "sixs": "0",
-    //             "sr": "80.76"
-    //         },
-    //         {
-    //             "playerName": "Riyan Parag ",
-    //             "wicketTaker": "c Shahrukh Khan b Ellis",
-    //             "run": "20",
-    //             "ball": "12",
-    //             "fours": "1",
-    //             "sixs": "2",
-    //             "sr": "166.66"
-    //         },
-    //         {
-    //             "playerName": "Shimron Hetmyer ",
-    //             "wicketTaker": "run out (Shahrukh Khan/Curran)",
-    //             "run": "36",
-    //             "ball": "18",
-    //             "fours": "1",
-    //             "sixs": "3",
-    //             "sr": "200.00"
-    //         },
-    //         {
-    //             "playerName": "Dhruv Jurel ",
-    //             "wicketTaker": "not out ",
-    //             "run": "32",
-    //             "ball": "15",
-    //             "fours": "3",
-    //             "sixs": "2",
-    //             "sr": "213.33"
-    //         },
-    //         {
-    //             "playerName": "Jason Holder ",
-    //             "wicketTaker": "not out ",
-    //             "run": "1",
-    //             "ball": "1",
-    //             "fours": "0",
-    //             "sixs": "0",
-    //             "sr": "100.00"
-    //         }
-    //     ],
-    //     "bowler1": [
-    //         {
-    //             "playerName": "Trent Boult",
-    //             "over": "4",
-    //             "run": "38",
-    //             "wicket": "0",
-    //             "economy": "9.50"
-    //         },
-    //         {
-    //             "playerName": "KM Asif",
-    //             "over": "4",
-    //             "run": "54",
-    //             "wicket": "0",
-    //             "economy": "13.50"
-    //         },
-    //         {
-    //             "playerName": "Ravichandran Ashwin",
-    //             "over": "4",
-    //             "run": "25",
-    //             "wicket": "1",
-    //             "economy": "6.25"
-    //         },
-    //         {
-    //             "playerName": "Jason Holder",
-    //             "over": "4",
-    //             "run": "29",
-    //             "wicket": "2",
-    //             "economy": "7.25"
-    //         },
-    //         {
-    //             "playerName": "Yuzvendra Chahal",
-    //             "over": "4",
-    //             "run": "50",
-    //             "wicket": "1",
-    //             "economy": "12.50"
-    //         }
-    //     ],
-    //     "bowler2": [
-    //         {
-    //             "playerName": "Sam Curran",
-    //             "over": "4",
-    //             "run": "44",
-    //             "wicket": "0",
-    //             "economy": "11.00"
-    //         },
-    //         {
-    //             "playerName": "Arshdeep Singh",
-    //             "over": "4",
-    //             "run": "47",
-    //             "wicket": "2",
-    //             "economy": "11.75"
-    //         },
-    //         {
-    //             "playerName": "Harpreet Brar",
-    //             "over": "2",
-    //             "run": "15",
-    //             "wicket": "0",
-    //             "economy": "7.50"
-    //         },
-    //         {
-    //             "playerName": "Nathan Ellis",
-    //             "over": "4",
-    //             "run": "30",
-    //             "wicket": "4",
-    //             "economy": "7.50"
-    //         },
-    //         {
-    //             "playerName": "Rahul Chahar",
-    //             "over": "4",
-    //             "run": "31",
-    //             "wicket": "0",
-    //             "economy": "7.75"
-    //         },
-    //         {
-    //             "playerName": "Sikandar Raza",
-    //             "over": "2",
-    //             "run": "24",
-    //             "wicket": "0",
-    //             "economy": "12.00"
-    //         }
-    //     ]
-    // }
-      
     } catch (e) {
       console.error(e);
     }
   };
+
   useEffect(() => {
     fetchScore("http://localhost:5000/livescore")
   }, [match]);
 
+  const teamName = {
+    team1: match.team1,
+    team2: match.team2,
+  };
+
+  const teamImageMapping = {
+    'Chennai Super Kings': require('./resources/team_images/CSK.jpg'),
+    'Delhi Capitals': require('./resources/team_images/DC.png'),
+    'Gujarat Titans': require('./resources/team_images/GT.png'),
+    'Kolkata Knight Riders': require('./resources/team_images/KKR.png'),
+    'Lucknow Super Giants': require('./resources/team_images/LSG.png'),
+    'Mumbai Indians': require('./resources/team_images/MI.png'),
+    'Punjab Kings': require('./resources/team_images/PBKS.png'),
+    'Royal Challengers Bangalore': require('./resources/team_images/RCB.jpg'),
+    'Rajasthan Royals': require('./resources/team_images/RR.png'),
+    'Sunrisers Hyderabad': require('./resources/team_images/SRH.png'),
+  };
+  
+  
+  const getImageSource = (teamName) => {
+    console.log("team name", teamName);
+    const imageSource = teamImageMapping[teamName];
+    console.log(imageSource)
+    if (imageSource) {
+      return imageSource;
+    }
+    // If no match found, return a fallback image path
+    return require('./resources/team_images/fallbackLuffy.gif');
+  }; 
+
+  const team1ImageSrc = getImageSource(teamName.team1);
+  const team2ImageSrc = getImageSource(teamName.team2);
+
   return (
     <>
     <div style={{backgroundColor:'rgb(249 249 255)', minHeight:'90.1vh', marginTop:'-1%'}}>
-      <div style={{}}>
-
+      <div>
+        {/* <div>
+          <img src={team1ImageSrc} alt={teamName.team1} />
+          <img src={team2ImageSrc} alt={teamName.team2} />
+        </div> */}
         <div className="container" style={{backgroundColor:'', width:'40%'}}>
           <div style={{
               backgroundColor:'white',
@@ -308,9 +111,9 @@ function LiveScore() {
               }}>
               <div className="col-md-6 d-flex justify-content-center align-items-center" style={{ backgroundColor: '' }}>
                 <div className="d-flex flex-column align-items-center">
-                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/313400/313418.logo.png" alt={match.team2} style={{ width: '50%' }} />
+                <img src={team1ImageSrc} alt={match.team2} style={{ width: '50%' }} />
 
-                  <p style={{ fontWeight: 'bold', fontSize: '22px' }}>{match.team1}</p>
+                  <p style={{ fontWeight: 'bold', fontSize: '20px' }}>{match.team1}</p>
                 </div>
                 <div className="row align-items-center ml-3">
                   <div className="col">
@@ -320,8 +123,8 @@ function LiveScore() {
               </div>
               <div className="col-md-6 d-flex justify-content-center align-items-center" style={{ backgroundColor: '' }}>
                 <div className="d-flex flex-column align-items-center">
-                <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/db/PICTURES/CMS/313400/313423.logo.png" alt={match.team1} style={{ width: '50%' }} />
-                  <p style={{ fontWeight: 'bold', fontSize: '22px' }}>{match.team2}</p>
+                <img src={team2ImageSrc} alt={match.team2} style={{ width: '50%' }} />
+                  <p style={{ fontWeight: 'bold', fontSize: '20px' }}>{match.team2}</p>
                 </div>
                 <div className="row align-items-center ml-3">
                   <div className="col">
@@ -330,7 +133,7 @@ function LiveScore() {
                 </div>
               </div>
             </div>
-            
+            <div style={{height:'5vh'}}></div>
             <div className="row" style={{ 
                 backgroundColor:'white',
                 margin:'0 20px 0 20px',
