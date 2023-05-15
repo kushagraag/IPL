@@ -4,3 +4,4 @@ pf.sh
 *.old
 docker-compose.yml
 logstash.conf
+pipeline testing.txt

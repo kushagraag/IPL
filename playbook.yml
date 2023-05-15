@@ -9,32 +9,41 @@
       service:
         name: docker
         state: started
+    
 
-    - name: copy server-client deployment file from folder to remote host
-      copy:
-        src: ./server-client-deployment.yaml
-        dest: ./
-    - name: copy elastic data volume
-      copy:
-        src: ./elk/elasticsearch-data-volume-persistentvolumeclaim.yml
-        dest: ./
+    # - name: copy server-client deployment file from folder to remote host
+    #   copy:
+    #     src: ./server-client-deployment.yaml
+    #     dest: ./
+    # - name: copy elasticsearch file from folder to remote host
+    #   copy:
+    #     src: ./elk/elasticsearch-pod.yml
+    #     dest: ./
+    # - name: copy kibana file from folder to remote host
+    #   copy:
+    #     src: ./elk/kibana-pod.yml
+    #     dest: ./
+    # - name: copy elastic data volume
+    #   copy:
+    #     src: ./elk/elasticsearch-data-volume-persistentvolumeclaim.yml
+    #     dest: ./
         
-    - name: copy elastic deployment
-      copy:
-        src: ./elk/elasticsearch-deployment.yml
-        dest: ./
-    - name: copy elastic service
-      copy:
-        src: ./elk/elasticsearch-service.yml
-        dest: ./
-    - name: copy kibana deployment
-      copy:
-        src: ./elk/kibana-deployment.yml
-        dest: ./
-    - name: copy kibana service
-      copy:
-        src: ./elk/kibana-service.yml
-        dest: ./
+    # - name: copy elastic deployment
+    #   copy:
+    #     src: ./elk/elasticsearch-deployment.yml
+    #     dest: ./
+    # - name: copy elastic service
+    #   copy:
+    #     src: ./elk/elasticsearch-service.yml
+    #     dest: ./
+    # - name: copy kibana deployment
+    #   copy:
+    #     src: ./elk/kibana-deployment.yml
+    #     dest: ./
+    # - name: copy kibana service
+    #   copy:
+    #     src: ./elk/kibana-service.yml
+    #     dest: ./
 
 
     - name: pull docker server image
@@ -43,19 +52,33 @@
     - name: pull docker client image
       shell: docker pull eovnstd/ipl_client
 
-    - name: run the server manifest file
-      shell: kubectl apply -f ./server-client-deployment.yaml
+    - name: copy yaml files for kubectl
+      copy: 
+        src: ./elk/
+        dest: ./
+    
+    - name: run all kubectl files with kube.sh
+      shell: ./kube.sh
+
+    # - name: run the server manifest file
+    #   shell: kubectl apply -f ./server-client-deployment.yaml
       
-    - name: run the server manifest file
-      shell: kubectl apply -f ./elasticsearch-data-volume-persistentvolumeclaim.yml
-    - name: run the server manifest file
-      shell: kubectl apply -f ./elasticsearch-deployment.yml
-    - name: run the server manifest file
-      shell: kubectl apply -f ./elasticsearch-service.yml
-    - name: run the server manifest file
-      shell: kubectl apply -f ./kibana-deployment.yml
-    - name: run the server manifest file
-      shell: kubectl apply -f ./kibana-service.yml
+    # - name: run the server manifest file
+    #   shell: kubectl apply -f ./elasticsearch-pod.yml
+
+    # - name: run the server manifest file
+    #   shell: kubectl apply -f ./kibana-pod.yml
+      
+    # - name: run the server manifest file
+    #   shell: kubectl apply -f ./elasticsearch-data-volume-persistentvolumeclaim.yml
+    # - name: run the server manifest file
+    #   shell: kubectl apply -f ./elasticsearch-deployment.yml
+    # - name: run the server manifest file
+    #   shell: kubectl apply -f ./elasticsearch-service.yml
+    # - name: run the server manifest file
+    #   shell: kubectl apply -f ./kibana-deployment.yml
+    # - name: run the server manifest file
+    #   shell: kubectl apply -f ./kibana-service.yml
 
     
 
