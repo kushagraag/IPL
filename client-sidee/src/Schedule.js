@@ -7,7 +7,6 @@ function Schedule() {
         try {
             const res = await fetch(url);
             const data = await res.json();
-            // console.log(data);
             if (data.length > 0) {
                 setScheduls(data);
             }
@@ -18,9 +17,19 @@ function Schedule() {
     useEffect(() => {
         fetchTeams("http://localhost:5000/schedule");
     }, []);
+    const teamImageMapping = {
+        'Chennai Super Kings': require('./resources/team_images/CSK.jpg'),
+        'Delhi Capitals': require('./resources/team_images/DC.png'),
+        'Gujarat Titans': require('./resources/team_images/GT.png'),
+        'Kolkata Knight Riders': require('./resources/team_images/KKR.png'),
+        'Lucknow Super Giants': require('./resources/team_images/LSG.png'),
+        'Mumbai Indians': require('./resources/team_images/MI.png'),
+        'Punjab Kings': require('./resources/team_images/PBKS.png'),
+        'Royal Challengers Bangalore': require('./resources/team_images/RCB.jpg'),
+        'Rajasthan Royals': require('./resources/team_images/RR.png'),
+        'Sunrisers Hyderabad': require('./resources/team_images/SRH.png'),
+    };
 
-    const teamWin1 = false
-    const teamWin2 = true
     return (
         <> 
             {
@@ -32,9 +41,10 @@ function Schedule() {
                     team2,
                     team1_score,
                     team2_score,
-                    result
                 } = item;
-                // shadow adjustment is pending 
+                const team1Image = teamImageMapping[team1];
+                const team2Image = teamImageMapping[team2];
+
                 return (
                     // <div style={{width:'100%', backgroundColor:'#fbfbf9'}}>
                     <div class="container" style={{}}>
@@ -56,28 +66,30 @@ function Schedule() {
                                         <span>{time}</span>
                                     </div>
                                     <div style={{fontSize:20}} class="teams">
-                                        <div   class="row">
-                                            <span class="col-8">{team1} </span>
-                                            <span class="col-4 score" style={{textAlign:'right'}}>{team1_score}</span>
+                                        <div class="row">
+                                            <span class="col-1">
+                                                <img src={team1Image} alt={team1} style={{ width: "30px", height: "30px", marginRight: "10px" }} />
+                                            </span>
+                                            <span class="col-6">{team1}</span>
+                                            <span class="col-4 score" style={{ textAlign: 'right' }}>{team1_score}</span>
                                         </div>
                                         <div class="row">
-                                            <span class="col-8">{team2} </span>
-                                            <span class="col-4 score" style={{textAlign:'right'}}>{team2_score}</span>
+                                            <span class="col-1">
+                                                <img src={team2Image} alt={team2} style={{ width: "30px", height: "30px", marginRight: "10px" }} />
+                                            </span>
+                                            <span class="col-6">{team2}</span>
+                                            <span class="col-4 score" style={{ textAlign: 'right' }}>{team2_score}</span>
                                         </div>
                                     </div>
-                                    {/* <div style={{marginTop:12}} class="result">
-                                        <div>{result}</div>
-                                    </div> */}
                                 </span>
                             </div>
                         </div>
                     </div>
-                    // </div>
                 );
             })
         } </>
 
     );
 }
-//style={{fontWeight: teamWin1? 600:''}}
+
 export default Schedule;

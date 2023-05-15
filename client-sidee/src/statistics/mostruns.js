@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MostRuns = ({ item }) => {
-  console.log(item);
   return (
     <div className='container' style={{
       maxWidth:'100%',

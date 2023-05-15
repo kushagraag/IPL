@@ -1,17 +1,13 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import "./styles/Statistics.css"
-import MostRuns from "./statistics/mostruns";
-import HighestScores from "./statistics/highestScores";
-import HighestAverages from "./statistics/highestAverages";
-import HighestStrikeRates from "./statistics/highestStrikeRates";
-import MostFiftys from "./statistics/mostFiftys";
-import HighestMostWickets from "./statistics/highestMostWickets";
-import HighestBestBowlings from "./statistics/highestBestBowlings";
-import BestBowlingAvgs from "./statistics/bestBowlingAvgs";
-import BestEconomyRates from "./statistics/bestEconomyRates";
-import BestBowlingSrs from "./statistics/bestBowlingSrs";
-
+import MostRunsComponent from "./statistics/mostruns";
+import HighestScoresComponent from "./statistics/highestScores";
+import HighestAveragesComponent from "./statistics/highestAverages";
+import MostFiftysComponent from "./statistics/mostFiftys";
+import HighestMostWicketsComponent from "./statistics/highestMostWickets";
+import HighestBestBowlingsComponent from "./statistics/highestBestBowlings";
+import BestBowlingSrsComponent from "./statistics/bestBowlingSrs";
+import dhonigif from "./resources/team_images/dhoni.gif"
 
 function Statistic() {
 
@@ -20,12 +16,9 @@ function Statistic() {
   const [mostruns, setMostruns] = useState([]);
   const [highestScore, setHighestScore] = useState([]);
   const [highestAverage, setHighestAverage] = useState([]);
-  const [highestSR, setHighestSR] = useState([]);
   const [mostFifty, setMostFifty] = useState([]);
   const [mostWicket, setMostWicket] = useState([]);
   const [bestBowling, setBestBowling] = useState([]);
-  const [bestBowlingAvg, setBestBowlingAvg] = useState([]);
-  const [bestBowlingEconomy, setBestBowlingEconomy] = useState([]);
   const [bestBowlingSr, setBestBowlingSr] = useState([]);
 
   const fetchStat = async(url) => {
@@ -42,8 +35,6 @@ function Statistic() {
       console.error(e);
     }
   }
-
-  
   const fetchStats = async(url) => {
     try{
       const res = await fetch(url);
@@ -116,19 +107,6 @@ function Statistic() {
       console.error(e);
     }
   }
-  const fetchBestBowlingAvg = async(url) => {
-    try{
-      const res = await fetch(url);
-      const data = await res.json();   
-    if (data.length > 0) {
-      setBestBowlingAvg(data);
-    }
-    }
-    catch(e){
-      console.error(e);
-    }
-  }
- 
   const fetchBestBowlingSr = async(url) => {
     try{
       const res = await fetch(url);
@@ -149,52 +127,107 @@ function Statistic() {
     fetchMostFifty("http://localhost:5000/stats/mostfifty");
     fetchMostWicket("http://localhost:5000/stats/mostwicket");
     fetchBestBowling("http://localhost:5000/stats/bestbowling");
-    // fetchBestBowlingAvg("http://localhost:5000/stats/bestbowlingavg");
-    // fetchBestBowlingEconomy("http://localhost:5000/stats/bestbowlingeconomy");
     fetchBestBowlingSr("http://localhost:5000/stats/bestbowlingsr");
   }
   ,[])
   
-  
+  function MostRuns({ item }) {
+    return (
+      <>
+        {item && item.length > 0 ? (
+          <MostRunsComponent item={item} />
+        ) : (
+          // <h3>No Most Runs data available</h3>
+          <img src={dhonigif} width={'20%'}  ></img>
+        )}
+      </>
+    );
+  }
+  function HighestScores({ item }) {
+    return (
+      <>
+        {item && item.length > 0 ? (
+          <HighestScoresComponent stats={item} />
+        ) : (
+          <img src={dhonigif} width={'20%'}  ></img>
+          // <h3>No HighestScores data available</h3>
+        )}
+      </>
+    );
+  }
+  function HighestAverages({ item }) {
+    return (
+      <>
+        {item && item.length > 0 ? (
+          <HighestAveragesComponent stats={item} />
+        ) : (
+          <img src={dhonigif} width={'20%'}  ></img>
+          // <h3>No HighestAverages data available</h3>
+        )}
+      </>
+    );
+  }
+  function MostFiftys({ item }) {
+    return (
+      <>
+        {item && item.length > 0 ? (
+          <MostFiftysComponent stats={item} />
+        ) : (
+          <img src={dhonigif} width={'20%'}  ></img>
+          // <h3>No MostFiftys data available</h3>
+        )}
+      </>
+    );
+  }
+  function HighestMostWickets({ item }) {
+    return (
+      <>
+        {item && item.length > 0 ? (
+          <HighestMostWicketsComponent stats={item} />
+        ) : (
+          <img src={dhonigif} width={'20%'}  ></img>
+          // <h3>No HighestMostWickets data available</h3>
+        )}
+      </>
+    );
+  }
+  function HighestBestBowlings({ item }) {
+    return (
+      <>
+        {item && item.length > 0 ? (
+          <HighestBestBowlingsComponent stats={item} />
+        ) : (
+          <img src={dhonigif} width={'20%'}  ></img>
+          // <h3>No HighestBestBowlings data available</h3>
+        )}
+      </>
+    );
+  }
+  function BestBowlingSrs({ item }) {
+    return (
+      <>
+        {item && item.length > 0 ? (
+          <BestBowlingSrsComponent stats={item} />
+        ) : (
+          <img src={dhonigif} width={'20%'}  ></img>
+          // <h3>No BestBowlingSrs data available</h3>
+        )}
+      </>
+    );
+  }
 
     return (
       <>
-      {/* {
-        stats.map((item, index) => (
-          item.mostruns.map((mr) => (
-            <>
-              <p>{mr.matches}</p>
-              <p>{mr.run}</p>
-              <p>{mr.avg}</p>
-              <p>{mr.fifty}</p>
-              <p>{mr.hundreds}</p>
-            </>
-          ))
-        )) 
-      } */}
-      {/* conosle.log({stats}); */}
-      {/* {stats} */}
-      {/* {<MostRuns item = {mostruns}/>} */}
-      {/* {
-      loading === "true" ? <MostRuns data={data.mostruns}/> : <h1>hello</h1>} */}
-      {/* <MostRuns data={stats.mostruns}/> */}
       <div style={{backgroundColor:'#F8F9FA',  marginTop:'-1%'}}>
         <div className="container" style={{backgroundColor:'', width:'50%', borderRadius:''}}>
-          <MostRuns item={mostruns} />
-          <HighestScores stats={highestScore} />
-          <HighestAverages stats={highestAverage} />
-          {/* <HighestStrikeRates stats={highestSR} /> */}
-          <MostFiftys stats={mostFifty} />
-          <HighestMostWickets stats={mostWicket} />
-          <HighestBestBowlings stats={bestBowling} />
-          {/* <BestBowlingAvgs stats={bestBowlingAvg} /> */}
-          {/* <BestEconomyRates stats={bestBowlingEconomy} /> */}
-          <BestBowlingSrs stats={bestBowlingSr} />
           
-          {/* {
-            !stat && <h1>loading</h1>
-          } */}
-
+          <MostRuns item={mostruns} />
+          <HighestScores item={highestScore} />
+          <HighestAverages item={highestAverage} />
+          <MostFiftys item={mostFifty} />
+          <HighestMostWickets item={mostWicket} />
+          <HighestBestBowlings item={bestBowling} />
+          <BestBowlingSrs item={bestBowlingSr} />
         </div>
       </div>
       </>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const HighestScores = ({ stats }) => {
-  // console.log(stats)
   return (
     <div className='container' style={{
       maxWidth:'100%',

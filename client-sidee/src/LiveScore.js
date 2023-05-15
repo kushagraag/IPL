@@ -53,11 +53,6 @@ function LiveScore() {
     fetchScore("http://localhost:5000/livescore")
   }, [match]);
 
-  const teamName = {
-    team1: match.team1,
-    team2: match.team2,
-  };
-
   const teamImageMapping = {
     'Chennai Super Kings': require('./resources/team_images/CSK.jpg'),
     'Delhi Capitals': require('./resources/team_images/DC.png'),
@@ -83,8 +78,8 @@ function LiveScore() {
     return require('./resources/team_images/fallbackLuffy.gif');
   }; 
 
-  const team1ImageSrc = getImageSource(teamName.team1);
-  const team2ImageSrc = getImageSource(teamName.team2);
+  const team1ImageSrc = getImageSource(match.team1);
+  const team2ImageSrc = getImageSource(match.team2);
 
   return (
     <>
