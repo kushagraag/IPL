@@ -1,0 +1,87 @@
+pipeline {
+    environment{
+        server_img = ""
+        client_img = ""
+        
+    }
+agent any
+stages {
+    stage('GitHub pull') {
+        steps {
+            git 'https://github.com/kushagraag/IPL.git'
+        }
+    }
+    stage('Backend testing') {
+        steps {
+            dir("server-side"){
+                sh 'npm install'
+                sh 'npm test'
+            }
+            
+        }
+    }
+    stage('Frontend testing') {
+        steps {
+            dir("client-sidee"){
+                sh 'npm install'
+                // sh 'npm i -D @testing-library/react@12.1.2'
+                sh 'npm run test'
+            }
+            
+        }
+    }
+    stage('Create Docker image for server') {
+        steps {
+            dir("server-side"){
+                script{
+                server_img = docker.build "eovnstd/ipl_server:latest"
+            }
+            }
+            
+        }
+    }
+    stage('Create Docker image for client') {
+        steps {
+            dir("client-sidee"){
+                script{
+                client_img = docker.build "eovnstd/ipl_client:latest"
+            }
+                
+            }
+            
+        }
+    }
+    stage('Push Server Docker image to DockerHub') {
+        steps {
+            script{
+                docker.withRegistry('',"Dockerhub"){
+                    server_img.push()
+                    
+                }
+                
+            }
+        }
+    }
+    stage('Push Client Docker image to DockerHub') {
+        steps {
+            script{
+                docker.withRegistry('',"Dockerhub"){
+                    client_img.push()
+                    
+                }
+                
+            }
+        }
+    }
+    stage('Ansible pull docker image from docker hub') {
+        steps {
+            script{
+                sh 'export LC_ALL=en_IN.UTF-8'
+            }
+            ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'hosts', playbook: 'playbook.yml', sudoUser: null
+            
+        }
+    }
+    
+}
+}
